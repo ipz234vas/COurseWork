@@ -8,9 +8,43 @@
       Height="560"
       Width="620"
       Title="PageMenu"
-      Background="Red">
-
-    <Grid>
-        
-    </Grid>
+      Background="Black">
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBlock Text="BATTLE" Style="{StaticResource gameName}"/>
+        <TextBlock Text="CITY" Style="{StaticResource gameName}"/>
+        <ListBox Background="Transparent" Width="250" Padding="2" BorderBrush="Transparent" Loaded="menuList_Loaded">
+            <ListBox.Resources>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListBoxItem">
+                                <Border x:Name="Border" Padding="2" Background="Transparent">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image x:Name="menuIcon" Source="pack://application:,,,/Images/Ico.ico" Visibility="Hidden"/>
+                                        <TextBlock Text="{TemplateBinding Content}" Style="{StaticResource mainText}"/>
+                                    </StackPanel>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="menuIcon" Property="Visibility" Value="Visible"/>
+                                    </Trigger>
+                                    <Trigger Property="IsFocused" Value="True">
+                                        <Setter TargetName="menuIcon" Property="Visibility" Value="Visible"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListBox.Resources>
+            <ListBoxItem Content="1 PLAYER" MouseEnter="ListBoxItem_MouseEnter" />
+            <ListBoxItem Content="2 PLAYERS" MouseEnter="ListBoxItem_MouseEnter"/>
+            <ListBoxItem Content="CONSTRUCTION" MouseEnter="ListBoxItem_MouseEnter"/>
+            <ListBoxItem Content="SETTINGS" MouseEnter="ListBoxItem_MouseEnter"/>
+            <ListBoxItem Content="LEADERBOARD" MouseEnter="ListBoxItem_MouseEnter"/>
+        </ListBox>
+        <TextBlock Text="CourseWork" Style="{StaticResource mainText}" Foreground="Red"/>
+        <TextBlock Text="© 2024" Style="{StaticResource mainText}"/>
+        <TextBlock Text="ANDREW VOLYNETS" Style="{StaticResource mainText}" Foreground="Gray"/>
+    </StackPanel>
 </Page>

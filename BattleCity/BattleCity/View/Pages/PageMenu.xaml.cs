@@ -24,5 +24,26 @@ namespace BattleCity.View.Pages
         {
             InitializeComponent();
         }
+
+        private void ListBoxItem_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (sender is ListBoxItem listBoxItem)
+            {
+                listBoxItem.Focus();
+            }
+        }
+
+        private void menuList_Loaded(object sender, RoutedEventArgs e)
+        {
+            var listBox = sender as ListBox;
+            if (listBox != null && listBox.Items.Count > 0)
+            {
+                var firstItem = listBox.ItemContainerGenerator.ContainerFromIndex(0) as ListBoxItem;
+                if (firstItem != null)
+                {
+                    firstItem.Focus();
+                }
+            }
+        }
     }
 }

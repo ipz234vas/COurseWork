@@ -9,9 +9,12 @@
         Background="Black"
         Title="BattleCity" 
         d:DesignHeight="560"
-        d:DesignWidth="620" 
+        d:DesignWidth="620"
+        MinHeight="200"
         WindowStartupLocation="CenterScreen"
         Icon="pack://application:,,,/Images/Ico.ico">
-    <Frame Source="../Pages/PageMenu.xaml" NavigationUIVisibility="Hidden"/>
-    
+    <Viewbox>
+        <Frame Source="../Pages/PageMenu.xaml" NavigationUIVisibility="Hidden"/>
+    </Viewbox>
+
 </Window>

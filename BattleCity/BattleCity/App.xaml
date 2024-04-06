@@ -4,6 +4,22 @@
              xmlns:local="clr-namespace:BattleCity"
              StartupUri="../View/Windows/MainWindow.xaml">
     <Application.Resources>
-         
+        <FontFamily x:Key="BattleCityFontFamily">Fonts/#BATTLECITIES</FontFamily>
+        <FontFamily x:Key="MainTextFontFamily">Fonts/#BattleCityInfo</FontFamily>
+        <Style x:Key="gameName">
+            <Setter Property="Control.FontFamily" Value="{StaticResource BattleCityFontFamily}" />
+            <Setter Property="Control.FontSize" Value="70" />
+            <Setter Property="Control.Foreground" Value="Red" />
+            <Setter Property="Control.HorizontalAlignment" Value="Center" />
+            <Setter Property="Control.Margin" Value="5" />
+        </Style>
+        <Style x:Key="mainText">
+            <Setter Property="Control.FontFamily" Value="{StaticResource MainTextFontFamily}"/>
+            <Setter Property="Control.FontSize" Value="15"/>
+            <Setter Property="Control.VerticalAlignment" Value="Center"/>
+            <Setter Property="Control.HorizontalAlignment" Value="Center"/>
+            <Setter Property="Control.Margin" Value="10"/>
+            <Setter Property="Control.Foreground" Value="White"/>
+        </Style>
     </Application.Resources>
 </Application>
