@@ -4,8 +4,8 @@
              xmlns:local="clr-namespace:BattleCity"
              StartupUri="../View/Windows/MainWindow.xaml">
     <Application.Resources>
-        <FontFamily x:Key="BattleCityFontFamily">Fonts/#BATTLECITIES</FontFamily>
-        <FontFamily x:Key="MainTextFontFamily">Fonts/#BattleCityInfo</FontFamily>
+        <FontFamily x:Key="BattleCityFontFamily">Resources/Fonts/#BATTLECITIES</FontFamily>
+        <FontFamily x:Key="MainTextFontFamily">Resources/Fonts/#BattleCityInfo</FontFamily>
         <Style x:Key="gameName">
             <Setter Property="Control.FontFamily" Value="{StaticResource BattleCityFontFamily}" />
             <Setter Property="Control.FontSize" Value="70" />
@@ -20,6 +20,18 @@
             <Setter Property="Control.HorizontalAlignment" Value="Center"/>
             <Setter Property="Control.Margin" Value="10"/>
             <Setter Property="Control.Foreground" Value="White"/>
+        </Style>
+        <Style BasedOn="{StaticResource mainText}" TargetType="Button"  x:Key="menuButton">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <ContentPresenter/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
     </Application.Resources>
 </Application>

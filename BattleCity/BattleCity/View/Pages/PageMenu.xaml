@@ -4,15 +4,21 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BattleCity.View.Pages"
+      xmlns:vm="clr-namespace:BattleCity.ViewModel"
+      xmlns:commands="clr-namespace:BattleCity.Commands"
       mc:Ignorable="d" 
       Height="560"
       Width="620"
       Title="PageMenu"
       Background="Black">
+    <Page.DataContext>
+        <vm:MenuViewModel/>
+    </Page.DataContext>
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
         <TextBlock Text="BATTLE" Style="{StaticResource gameName}"/>
         <TextBlock Text="CITY" Style="{StaticResource gameName}"/>
-        <ListBox Background="Transparent" Width="250" Padding="2" BorderBrush="Transparent" Loaded="menuList_Loaded">
+        <ListBox Name="menuList" Background="Transparent" Width="250" Padding="2" BorderBrush="Transparent" ItemsSource="{Binding menuList}" 
+                 Loaded="menuList_Loaded">
             <ListBox.Resources>
                 <Style TargetType="ListBoxItem">
                     <Setter Property="Template">
@@ -20,8 +26,10 @@
                             <ControlTemplate TargetType="ListBoxItem">
                                 <Border x:Name="Border" Padding="2" Background="Transparent">
                                     <StackPanel Orientation="Horizontal">
-                                        <Image x:Name="menuIcon" Source="pack://application:,,,/Images/Ico.ico" Visibility="Hidden"/>
-                                        <TextBlock Text="{TemplateBinding Content}" Style="{StaticResource mainText}"/>
+                                        <Image x:Name="menuIcon" Source="../../Resources/Images/Ico.ico" Visibility="Hidden"/>
+                                        <Button Content="{Binding Text}" Style="{StaticResource menuButton}"
+                                                Command="{Binding Command}"
+                                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}}"/>
                                     </StackPanel>
                                 </Border>
                                 <ControlTemplate.Triggers>
@@ -35,13 +43,10 @@
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
+                    <EventSetter Event="MouseEnter" Handler="menuList_MouseEnter"/>
+                    <EventSetter Event="PreviewKeyDown" Handler="ListBoxItem_PreviewKeyDown"/>
                 </Style>
             </ListBox.Resources>
-            <ListBoxItem Content="1 PLAYER" MouseEnter="ListBoxItem_MouseEnter" />
-            <ListBoxItem Content="2 PLAYERS" MouseEnter="ListBoxItem_MouseEnter"/>
-            <ListBoxItem Content="CONSTRUCTION" MouseEnter="ListBoxItem_MouseEnter"/>
-            <ListBoxItem Content="SETTINGS" MouseEnter="ListBoxItem_MouseEnter"/>
-            <ListBoxItem Content="LEADERBOARD" MouseEnter="ListBoxItem_MouseEnter"/>
         </ListBox>
         <TextBlock Text="CourseWork" Style="{StaticResource mainText}" Foreground="Red"/>
         <TextBlock Text="© 2024" Style="{StaticResource mainText}"/>

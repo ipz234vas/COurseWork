@@ -12,7 +12,7 @@
         d:DesignWidth="620"
         MinHeight="200"
         WindowStartupLocation="CenterScreen"
-        Icon="pack://application:,,,/Images/Ico.ico">
+        Icon="../../Resources/Images/Ico.ico">
     <Viewbox>
         <Frame Source="../Pages/PageMenu.xaml" NavigationUIVisibility="Hidden"/>
     </Viewbox>

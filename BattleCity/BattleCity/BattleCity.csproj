@@ -9,15 +9,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Fonts\BattleCity.ttf" />
-    <None Remove="Fonts\BattleCityInfo.ttf" />
-    <None Remove="Images\Ico.ico" />
+    <None Remove="Resources\Fonts\BattleCity.ttf" />
+    <None Remove="Resources\Fonts\BattleCityInfo.ttf" />
+    <None Remove="Resources\Images\Ico.ico" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Fonts\BattleCity.ttf" />
-    <Resource Include="Fonts\BattleCityInfo.ttf" />
-    <Resource Include="Images\Ico.ico">
+    <Resource Include="Resources\Fonts\BattleCity.ttf" />
+    <Resource Include="Resources\Fonts\BattleCityInfo.ttf" />
+    <Resource Include="Resources\Images\Ico.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
