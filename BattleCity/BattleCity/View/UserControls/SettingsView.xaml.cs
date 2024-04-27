@@ -1,5 +1,4 @@
-﻿using BattleCity.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,17 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BattleCity.View.Pages
+namespace BattleCity.View.UserControls
 {
-    /// <summary>
-    /// Interaction logic for PageMenu.xaml
-    /// </summary>
-    public partial class PageMenu : Page
-    {
-        public PageMenu()
-        {
-            InitializeComponent();
-			DataContext = new MenuViewModel();
+	/// <summary>
+	/// Interaction logic for SettingsView.xaml
+	/// </summary>
+	public partial class SettingsView : UserControl
+	{
+		public SettingsView()
+		{
+			InitializeComponent();
 		}
-    }
+	}
 }

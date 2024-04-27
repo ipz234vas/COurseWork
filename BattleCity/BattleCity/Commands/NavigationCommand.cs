@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BattleCity.Stores;
+using BattleCity.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,20 +9,23 @@ using System.Windows.Controls;
 
 namespace BattleCity.Commands
 {
-    public class NavigationCommand : BaseCommand
+    public class NavigationCommand<TViewModel> : BaseCommand
+        where TViewModel : BaseViewModel
     {
-        private readonly Action<Page, Uri> execute;
-        private readonly Uri uri;
+        private readonly NavigationStore _navigationStore;
+        private readonly Func<TViewModel> _createViewModel;
 
-        public NavigationCommand(Action<Page, Uri> execute, Uri uri)
+
+		public NavigationCommand(NavigationStore navigationStore, Func<TViewModel> createViewModel)
         {
-            this.execute = execute;
-            this.uri = uri;
+            _navigationStore = navigationStore;
+            _createViewModel = createViewModel;
         }
 
-        public override void Execute(object parameter)
-        {
-            execute.Invoke((Page)parameter, uri);
-        }
-    }
+		public override void Execute(object parameter)
+		{
+            _navigationStore.CurrentViewModel = _createViewModel();
+		}
+	}
+
 }

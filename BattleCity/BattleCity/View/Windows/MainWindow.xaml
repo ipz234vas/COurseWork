@@ -3,18 +3,29 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:BattleCity.ViewModel"
+        xmlns:vuc="clr-namespace:BattleCity.View.UserControls"
         xmlns:local="clr-namespace:BattleCity.View.Windows"
         xmlns:images="BattleCity.Images"
+        xmlns:program="clr-namespace:BattleCity"
         mc:Ignorable="d"
         Background="Black"
         Title="BattleCity" 
-        d:DesignHeight="560"
-        d:DesignWidth="620"
+        d:DesignHeight="{Binding Source={x:Static program:GameConfig.WindowHeight}}"
+        d:DesignWidth="{Binding Source={x:Static program:GameConfig.WindowWidth}}"
         MinHeight="200"
         WindowStartupLocation="CenterScreen"
         Icon="../../Resources/Images/Ico.ico">
     <Viewbox>
-        <Frame Source="../Pages/PageMenu.xaml" NavigationUIVisibility="Hidden"/>
+        <ContentControl Content="{Binding CurrentViewModel}">
+            <ContentControl.Resources>
+                <DataTemplate DataType="{x:Type vm:MenuViewModel}">
+                    <vuc:MenuView />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type vm:SettingsViewModel}">
+                    <vuc:SettingsView />
+                </DataTemplate>
+            </ContentControl.Resources>
+        </ContentControl>
     </Viewbox>
-
 </Window>

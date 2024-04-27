@@ -13,16 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BattleCity.View.Pages
+namespace BattleCity.View.UserControls
 {
-    /// <summary>
-    /// Interaction logic for PageSettings.xaml
-    /// </summary>
-    public partial class PageSettings : Page
-    {
-        public PageSettings()
-        {
-            InitializeComponent();
-        }
-    }
+	/// <summary>
+	/// Interaction logic for MenuView.xaml
+	/// </summary>
+	public partial class MenuView : UserControl
+	{
+		public MenuView()
+		{
+			InitializeComponent();
+		}
+	}
 }
