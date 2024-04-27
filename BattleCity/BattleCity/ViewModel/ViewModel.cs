@@ -19,15 +19,6 @@ namespace BattleCity.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        protected bool SetProperty<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
-        {
-            if (EqualityComparer<T>.Default.Equals(field, value)) return false;
-
-            field = value;
-            OnPropertyChanged(propertyName);
-            return true;
-        }
-
         protected static void NavigateToPage(Page page, Uri uri)
         {
             NavigationService.GetNavigationService(page).Navigate(uri);

@@ -4,21 +4,16 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BattleCity.View.Pages"
-      xmlns:vm="clr-namespace:BattleCity.ViewModel"
       xmlns:commands="clr-namespace:BattleCity.Commands"
       mc:Ignorable="d" 
       Height="560"
       Width="620"
       Title="PageMenu"
       Background="Black">
-    <Page.DataContext>
-        <vm:MenuViewModel/>
-    </Page.DataContext>
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
         <TextBlock Text="BATTLE" Style="{StaticResource gameName}"/>
         <TextBlock Text="CITY" Style="{StaticResource gameName}"/>
-        <ListBox Name="menuList" Background="Transparent" Width="250" Padding="2" BorderBrush="Transparent" ItemsSource="{Binding menuList}" 
-                 Loaded="menuList_Loaded">
+        <ListBox Name="menuList" Background="Transparent" Width="250" Padding="2" BorderBrush="Transparent" ItemsSource="{Binding menuList}" >
             <ListBox.Resources>
                 <Style TargetType="ListBoxItem">
                     <Setter Property="Template">
@@ -36,15 +31,10 @@
                                     <Trigger Property="IsMouseOver" Value="True">
                                         <Setter TargetName="menuIcon" Property="Visibility" Value="Visible"/>
                                     </Trigger>
-                                    <Trigger Property="IsFocused" Value="True">
-                                        <Setter TargetName="menuIcon" Property="Visibility" Value="Visible"/>
-                                    </Trigger>
                                 </ControlTemplate.Triggers>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
-                    <EventSetter Event="MouseEnter" Handler="menuList_MouseEnter"/>
-                    <EventSetter Event="PreviewKeyDown" Handler="ListBoxItem_PreviewKeyDown"/>
                 </Style>
             </ListBox.Resources>
         </ListBox>

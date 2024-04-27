@@ -18,11 +18,10 @@ namespace BattleCity.ViewModel
         
         public ObservableCollection<MenuItemModel> menuList { get; } = new ObservableCollection<MenuItemModel>
     {
-        new MenuItemModel("1 PLAYER", new NavigationCommand(NavigateToPage, new Uri("View/Pages/PageSettings.xaml", UriKind.Relative))),
-        new MenuItemModel("2 PLAYERS", new NavigationCommand(NavigateToPage, new Uri("View/Pages/PageSettings.xaml", UriKind.Relative))),
+        new MenuItemModel("PLAY", new NavigationCommand(NavigateToPage, new Uri("View/Pages/PageSettings.xaml", UriKind.Relative))),
         new MenuItemModel("CONSTRUCTION", new NavigationCommand(NavigateToPage, new Uri("View/Pages/PageSettings.xaml", UriKind.Relative))),
         new MenuItemModel("SETTINGS", new NavigationCommand(NavigateToPage, new Uri("View/Pages/PageSettings.xaml", UriKind.Relative))),
         new MenuItemModel("LEADERBOARD", new NavigationCommand(NavigateToPage, new Uri("View/Pages/PageSettings.xaml", UriKind.Relative)))
     };
-    }
+	}
 }
