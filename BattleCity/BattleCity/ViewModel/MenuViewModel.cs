@@ -1,5 +1,6 @@
 ﻿using BattleCity.Commands;
 using BattleCity.Model;
+using BattleCity.Services;
 using BattleCity.Stores;
 using System;
 using System.Collections.Generic;
@@ -17,14 +18,14 @@ namespace BattleCity.ViewModel
     public class MenuViewModel : BaseViewModel
     {
         public ObservableCollection<MenuItemModel> menuList { get; }
-        public MenuViewModel(NavigationStore navigationStore) 
+        public MenuViewModel(AccountStore accountStore, NavigationStore navigationStore) 
         {
             menuList = new ObservableCollection<MenuItemModel>
 	{
-		new MenuItemModel("PLAY", new NavigationCommand<SettingsViewModel>(navigationStore, () => new SettingsViewModel(navigationStore))),
-		new MenuItemModel("CONSTRUCTION", new NavigationCommand<SettingsViewModel>(navigationStore, () => new SettingsViewModel(navigationStore))),
-		new MenuItemModel("SETTINGS", new NavigationCommand<SettingsViewModel>(navigationStore, () => new SettingsViewModel(navigationStore))),
-		new MenuItemModel("LEADERBOARD", new NavigationCommand<SettingsViewModel>(navigationStore, () => new SettingsViewModel(navigationStore)))
+		new MenuItemModel("PLAY", new NavigationCommand<SettingsViewModel>(new NavigationService<SettingsViewModel>(navigationStore, () => new SettingsViewModel(accountStore, navigationStore)))),
+		new MenuItemModel("CONSTRUCTION", new NavigationCommand<SettingsViewModel>(new NavigationService<SettingsViewModel>(navigationStore, () => new SettingsViewModel(accountStore, navigationStore)))),
+		new MenuItemModel("SETTINGS", new NavigationCommand<SettingsViewModel>(new NavigationService<SettingsViewModel>(navigationStore, () => new SettingsViewModel(accountStore, navigationStore)))),
+		new MenuItemModel("LEADERBOARD", new NavigationCommand<SettingsViewModel>(new NavigationService<SettingsViewModel>(navigationStore, () => new SettingsViewModel(accountStore, navigationStore))))
 	};
 		}
 	}

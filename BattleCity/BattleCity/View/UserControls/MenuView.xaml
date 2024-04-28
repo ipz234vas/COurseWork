@@ -21,9 +21,7 @@
                                 <Border x:Name="Border" Padding="2" Background="Transparent">
                                     <StackPanel Orientation="Horizontal">
                                         <Image x:Name="menuIcon" Source="../../Resources/Images/Ico.ico" Visibility="Hidden"/>
-                                        <Button Content="{Binding Text}" Style="{StaticResource menuButton}"
-                                            Command="{Binding Command}"
-                                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}}"/>
+                                        <Button Content="{Binding Text}" Style="{StaticResource menuButton}" Command="{Binding Command}"/>
                                     </StackPanel>
                                 </Border>
                                 <ControlTemplate.Triggers>

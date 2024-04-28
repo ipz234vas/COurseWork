@@ -19,6 +19,12 @@
     <Viewbox>
         <ContentControl Content="{Binding CurrentViewModel}">
             <ContentControl.Resources>
+                <DataTemplate DataType="{x:Type vm:LogInViewModel}">
+                    <vuc:LogInView />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type vm:SignUpViewModel}">
+                    <vuc:SignUpView />
+                </DataTemplate>
                 <DataTemplate DataType="{x:Type vm:MenuViewModel}">
                     <vuc:MenuView />
                 </DataTemplate>

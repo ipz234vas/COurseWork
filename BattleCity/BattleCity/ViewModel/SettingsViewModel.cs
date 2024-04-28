@@ -1,4 +1,5 @@
 ﻿using BattleCity.Commands;
+using BattleCity.Services;
 using BattleCity.Stores;
 using System;
 using System.Collections.Generic;
@@ -13,9 +14,9 @@ namespace BattleCity.ViewModel
 	{
 		public ICommand NavigateMenuCommand { get; }
 
-		public SettingsViewModel(NavigationStore navigationStore)
+		public SettingsViewModel(AccountStore accountStore, NavigationStore navigationStore)
 		{
-			NavigateMenuCommand = new NavigationCommand<MenuViewModel>(navigationStore, () => new MenuViewModel(navigationStore));
+			NavigateMenuCommand = new NavigationCommand<MenuViewModel>(new NavigationService<MenuViewModel>(navigationStore, () => new MenuViewModel(accountStore, navigationStore)));
 		}
 	}
 }

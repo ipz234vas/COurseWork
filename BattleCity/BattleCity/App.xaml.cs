@@ -14,8 +14,9 @@ namespace BattleCity
     {
 		protected override void OnStartup(StartupEventArgs e)
 		{
+			AccountStore accountStore = new AccountStore();
 			NavigationStore navigationStore = new NavigationStore();
-			navigationStore.CurrentViewModel = new MenuViewModel(navigationStore);
+			navigationStore.CurrentViewModel = new LogInViewModel(accountStore, navigationStore);
 			MainWindow = new MainWindow()
 			{
 				DataContext = new MainViewModel(navigationStore)
@@ -26,5 +27,4 @@ namespace BattleCity
 			base.OnStartup(e);
 		}
 	}
-
 }

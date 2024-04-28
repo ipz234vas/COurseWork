@@ -11,12 +11,16 @@
   <ItemGroup>
     <None Remove="Resources\Fonts\BattleCity.ttf" />
     <None Remove="Resources\Fonts\BattleCityInfo.ttf" />
+    <None Remove="Resources\Fonts\easvhs.ttf" />
     <None Remove="Resources\Images\Ico.ico" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Resources\Fonts\BattleCity.ttf" />
     <Resource Include="Resources\Fonts\BattleCityInfo.ttf" />
+    <Content Include="Resources\Fonts\easvhs.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Resource Include="Resources\Images\Ico.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

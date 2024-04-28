@@ -1,4 +1,5 @@
-﻿using BattleCity.Stores;
+﻿using BattleCity.Services;
+using BattleCity.Stores;
 using BattleCity.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -12,20 +13,16 @@ namespace BattleCity.Commands
     public class NavigationCommand<TViewModel> : BaseCommand
         where TViewModel : BaseViewModel
     {
-        private readonly NavigationStore _navigationStore;
-        private readonly Func<TViewModel> _createViewModel;
+        private readonly NavigationService<TViewModel> _navigationService;
 
-
-		public NavigationCommand(NavigationStore navigationStore, Func<TViewModel> createViewModel)
+		public NavigationCommand(NavigationService<TViewModel> navigationService)
         {
-            _navigationStore = navigationStore;
-            _createViewModel = createViewModel;
+            _navigationService = navigationService;
         }
 
 		public override void Execute(object parameter)
 		{
-            _navigationStore.CurrentViewModel = _createViewModel();
+            _navigationService.Navigate();
 		}
 	}
-
 }

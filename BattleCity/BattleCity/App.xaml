@@ -5,6 +5,7 @@
     <Application.Resources>
         <FontFamily x:Key="BattleCityFontFamily">Resources/Fonts/#BATTLECITIES</FontFamily>
         <FontFamily x:Key="MainTextFontFamily">Resources/Fonts/#BattleCityInfo</FontFamily>
+        <FontFamily x:Key="SecondaryTextFontFamily">Resources/Fonts/#EASVHS</FontFamily>
         <Style x:Key="gameName">
             <Setter Property="Control.FontFamily" Value="{StaticResource BattleCityFontFamily}" />
             <Setter Property="Control.FontSize" Value="70" />
@@ -20,7 +21,7 @@
             <Setter Property="Control.Margin" Value="10"/>
             <Setter Property="Control.Foreground" Value="White"/>
         </Style>
-        <Style BasedOn="{StaticResource mainText}" TargetType="Button"  x:Key="menuButton">
+        <Style BasedOn="{StaticResource mainText}" TargetType="Button" x:Key="menuButton">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderBrush" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="0"/>
@@ -31,6 +32,55 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+        </Style>
+        <Style TargetType="TextBox" x:Key="LogInTextBox">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="FontFamily" Value="{StaticResource SecondaryTextFontFamily}"/>
+        </Style>
+        <Style BasedOn="{StaticResource mainText}" TargetType="Button" x:Key="submitButton">
+            <Setter Property="Padding" Value="20 10"/>
+            <Setter Property="Background" Value="White" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"  
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                          VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="LightGray" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style BasedOn="{StaticResource menuButton}" TargetType="Button" x:Key="ImportantTextButton">
+            <Setter Property="Padding" Value="0 0 0 5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"  
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="BorderThickness" Value="0 0 0 2" />
+                    <Setter Property="Padding" Value="0 0 0 3" />
+                </Trigger>
+            </Style.Triggers>
         </Style>
     </Application.Resources>
 </Application>
