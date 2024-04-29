@@ -21,6 +21,8 @@
     <Content Include="Resources\Fonts\easvhs.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.18" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.18" />
     <Resource Include="Resources\Images\Ico.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

@@ -6,8 +6,8 @@
              xmlns:local="clr-namespace:BattleCity.View.UserControls"
              xmlns:program="clr-namespace:BattleCity"
              mc:Ignorable="d" 
-             Height="{Binding Source={x:Static program:GameConfig.WindowHeight}}"
-             Width="{Binding Source={x:Static program:GameConfig.WindowWidth}}"
+             Height="672"
+             Width="744"
              Background="Black">
     <Grid
     Margin="20"
@@ -21,41 +21,46 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" />
         </Grid.ColumnDefinitions>
 
         <TextBlock
-        Grid.Row="0"
-        HorizontalAlignment="Center"
-        Text="Sign UP"
-        Style="{StaticResource gameName}"/>
-
-        <StackPanel Grid.Row="1" Margin="0 20 0 0">
+            Grid.Row="0"
+            HorizontalAlignment="Center"
+            Text="Sign UP"
+            Style="{StaticResource gameName}"/>
+        <TextBlock 
+            Grid.Row="1"
+            Text="{Binding UserExistErrorMessage}"
+            Style="{StaticResource MessageTextBlock}"/>
+        <StackPanel Grid.Row="2" Margin="0 20 0 0">
             <StackPanel>
                 <TextBlock Text="Username" Style="{StaticResource mainText}" />
-                <TextBox Text="{Binding Username}" Style="{StaticResource LogInTextBox}"/>
-            </StackPanel>
-            <StackPanel Grid.Row="2" Margin="0 10 0 0">
-                <TextBlock Text="Password" Style="{StaticResource mainText}" />
-                <TextBox Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource LogInTextBox}"/>
+                <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource LogInTextBox}" MaxLength="16"/>
             </StackPanel>
             <StackPanel Grid.Row="3" Margin="0 10 0 0">
+                <TextBlock Text="Password" Style="{StaticResource mainText}" />
+                <TextBox Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource LogInTextBox}" MaxLength="25"/>
+            </StackPanel>
+            <StackPanel Grid.Row="4" Margin="0 10 0 0">
                 <TextBlock Text="Confirm Password" Style="{StaticResource mainText}" />
-                <TextBox Text="{Binding ConfirmPassword, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource LogInTextBox}"/>
+                <TextBox Text="{Binding ConfirmPassword, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource LogInTextBox}" MaxLength="25"/>
             </StackPanel>
         </StackPanel>
 
         <Button
-        Grid.Row="4"
+        Grid.Row="5"
         Margin="0 15 0 0"
         HorizontalAlignment="Center"
         Command="{Binding SignUpCommand}"
         Content="SIGN UP" 
         Style="{StaticResource submitButton}"
+        IsEnabled="{Binding CanSignUp}"
         Foreground="Black"/>
-        <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20 0 0">
+        <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20 0 0">
             <TextBlock Text="Already have an account?" Style="{StaticResource mainText}" Padding="0 0 0 5"/>
             <Button          
         HorizontalAlignment="Center"
@@ -66,7 +71,7 @@
         BorderBrush="Red"/>
         </StackPanel>
         <Button
-        Grid.Row="6"
+        Grid.Row="7"
         HorizontalAlignment="Center"
         Command="{Binding NavigateMenuCommand}"
         Content="CONTINUE WITHOUT SIGN UP" 

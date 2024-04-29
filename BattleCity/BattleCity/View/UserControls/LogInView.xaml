@@ -19,6 +19,7 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" />
@@ -30,26 +31,31 @@
             Text="Login"
             Style="{StaticResource gameName}"/>
 
-        <StackPanel Grid.Row="1" Margin="0 20 0 0">
+        <TextBlock 
+            Grid.Row="1"
+            Text="{Binding LoginErrorMessage}"
+            Style="{StaticResource MessageTextBlock}"/>
+
+        <StackPanel Grid.Row="2" Margin="0 20 0 0">
             <StackPanel>
                 <TextBlock Text="Username" Style="{StaticResource mainText}" />
-                <TextBox Text="{Binding Username}" Style="{StaticResource LogInTextBox}"/>
+                <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource LogInTextBox}" MaxLength="16"/>
             </StackPanel>
             <StackPanel Grid.Row="2" Margin="0 10 0 0">
                 <TextBlock Text="Password" Style="{StaticResource mainText}" />
-                <TextBox Text="{Binding Password}" Style="{StaticResource LogInTextBox}"/>
+                <TextBox Text="{Binding Password, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Style="{StaticResource LogInTextBox}" MaxLength="25"/>
             </StackPanel>
         </StackPanel>
-
         <Button
-            Grid.Row="2"
+            Grid.Row="3"
             Margin="0 15 0 0"
             HorizontalAlignment="Center"
             Command="{Binding LoginCommand}"
             Content="LOG IN" 
             Style="{StaticResource submitButton}"
+            IsEnabled="{Binding CanLogIn}"
             Foreground="Black"/>
-        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20 0 0">
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20 0 0">
             <TextBlock Text="Don't have an account?" Style="{StaticResource mainText}" Padding="0 0 0 5"/>
             <Button          
             HorizontalAlignment="Center"
@@ -60,7 +66,7 @@
             BorderBrush="Red"/>
         </StackPanel>
         <Button
-            Grid.Row="4"
+            Grid.Row="5"
             HorizontalAlignment="Center"
             Command="{Binding NavigateMenuCommand}"
             Content="CONTINUE WITHOUT LOGIN" 

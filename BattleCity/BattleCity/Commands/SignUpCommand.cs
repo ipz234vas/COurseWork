@@ -27,25 +27,19 @@ namespace BattleCity.Commands
 
 		public override void Execute(object parameter)
 		{
-			if (_signUpViewModel.Password == null || _signUpViewModel.Username == null || _signUpViewModel.Password == "")
+			using (var context = new ApplicationDbContext())
 			{
-				MessageBox.Show("Some field is empty");
-				return;
-			}
-			if (_signUpViewModel.Password != _signUpViewModel.ConfirmPassword) 
-			{
-				MessageBox.Show("Passwords do not match");
-				return; 
-			}
-				Account account = new Account()
-			{
-				Username = _signUpViewModel.Username,
-				Password = _signUpViewModel.Password
-			};
+				if (context.Accounts.FirstOrDefault(Account => Account.Username == _signUpViewModel.Username) != null)
+				{
+					_signUpViewModel.UserExistErrorMessage = "Username is already taken";
+					return;
+				}
+				Account _account = new Account(_signUpViewModel.Username, _signUpViewModel.Password, 1);
+				context.Accounts.Add(_account);
+				context.SaveChanges();
 
-			_accountStore.CurrentAccount = account;
-
-			_navigationService.Navigate();
+				_navigationService.Navigate();
+			}
 		}
 	}
 }

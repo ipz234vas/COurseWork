@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace BattleCity.Commands
 {
@@ -25,15 +26,23 @@ namespace BattleCity.Commands
 
 		public override void Execute(object parameter)
 		{
-			Account account = new Account()
+			using(var context = new ApplicationDbContext())
 			{
-				Username = _logInViewModel.Username,
-				Password = _logInViewModel.Password
-			};
+				Account account = context.Accounts.FirstOrDefault(Account => Account.Username == _logInViewModel.Username);
+				if (account != null)
+				{
+					if (PasswordHashService.VerifyPassword(_logInViewModel.Password, account.PasswordHash))
+					{
+						Account _account = new Account(account.Id, account.Username, account.CurrentLevel);
 
-			_accountStore.CurrentAccount = account;
+						_accountStore.CurrentAccount = _account;
 
-			_navigationService.Navigate();
+						_navigationService.Navigate();
+					}
+					else _logInViewModel.LoginErrorMessage = "Wrong password";
+				}
+				else _logInViewModel.LoginErrorMessage = "Username is not found";
+			}
 		}
 	}
 }

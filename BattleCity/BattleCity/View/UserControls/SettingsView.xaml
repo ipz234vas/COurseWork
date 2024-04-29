@@ -10,6 +10,15 @@
              Width="{Binding Source={x:Static program:GameConfig.WindowWidth}}"
              Background="Black">
     <Grid>
-
+        <Button Style="{StaticResource ImportantTextButton}" 
+                Command="{Binding NavigateMenuCommand}" 
+                Content="GO TO MENU" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top" 
+                Margin="30 30 0 0"
+                BorderBrush="White"/>
+        <Button Style="{StaticResource submitButton}" 
+                Content="ACCOUNT SETTINGS"
+                Foreground="Black"/>
     </Grid>
 </UserControl>
