@@ -6,8 +6,8 @@
              xmlns:local="clr-namespace:BattleCity.View.UserControls"
              xmlns:program="clr-namespace:BattleCity"
              mc:Ignorable="d" 
-             Height="{Binding Source={x:Static program:GameConfig.WindowHeight}}"
-             Width="{Binding Source={x:Static program:GameConfig.WindowWidth}}"
+             Height="560"
+             Width="620"
              Background="Black">
     <Grid
         Margin="20"

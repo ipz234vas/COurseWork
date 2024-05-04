@@ -5,20 +5,34 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BattleCity.View.UserControls"
              xmlns:program="clr-namespace:BattleCity"
+             xmlns:vm="clr-namespace:BattleCity.ViewModel"
+             xmlns:vuc="clr-namespace:BattleCity.View.UserControls"
              mc:Ignorable="d" 
-             Height="{Binding Source={x:Static program:GameConfig.WindowHeight}}"
-             Width="{Binding Source={x:Static program:GameConfig.WindowWidth}}"
+             Height="560"
+             Width="620"
              Background="Black">
-    <Grid>
-        <Button Style="{StaticResource ImportantTextButton}" 
-                Command="{Binding NavigateMenuCommand}" 
-                Content="GO TO MENU" 
-                HorizontalAlignment="Left" 
-                VerticalAlignment="Top" 
-                Margin="30 30 0 0"
-                BorderBrush="White"/>
-        <Button Style="{StaticResource submitButton}" 
-                Content="ACCOUNT SETTINGS"
-                Foreground="Black"/>
-    </Grid>
+    <Viewbox>
+        <ContentControl Content="{Binding CurrentSettingsViewModel}">
+            <ContentControl.Resources>
+                <DataTemplate DataType="{x:Type vm:SettingsMenuViewModel}">
+                    <vuc:SettingsMenuView />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type vm:SettingsAccountViewModel}">
+                    <vuc:SettingsAccountView />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type vm:SettingsAccountNameViewModel}">
+                    <vuc:SettingsAccountNameView />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type vm:SettingsAccountPasswordViewModel}">
+                    <vuc:SettingsAccountPasswordView />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type vm:SettingsAccountResetViewModel}">
+                    <vuc:SettingsAccountResetView />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type vm:SettingsAccountDeleteViewModel}">
+                    <vuc:SettingsAccountDeleteView />
+                </DataTemplate>
+            </ContentControl.Resources>
+        </ContentControl>
+    </Viewbox>
 </UserControl>

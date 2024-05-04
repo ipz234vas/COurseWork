@@ -1,29 +1,31 @@
 ﻿using BattleCity.Commands;
 using BattleCity.Services;
 using BattleCity.Stores;
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Text.RegularExpressions;
-using System.Windows.Documents;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace BattleCity.ViewModel
 {
-	public class LogInViewModel : BaseViewModel, INotifyDataErrorInfo
+	public class SettingsAccountNameViewModel : BaseViewModel, INotifyDataErrorInfo
 	{
 		private readonly ErrorsViewModel _errorsViewModel;
 
 		private readonly AccountValidationService validationService;
 
-		private string username; 
+		private string username;
 		public string Username
 		{
 			get => username;
 			set
 			{
 				username = value;
-				LoginErrorMessage = null;
+				ChangeNameErrorMessage = null;
 
 				validationService.ValidateUsername(nameof(Username), username);
 
@@ -38,35 +40,33 @@ namespace BattleCity.ViewModel
 			set
 			{
 				password = value;
-				LoginErrorMessage = null;
+				ChangeNameErrorMessage = null;
 
 				validationService.ValidatePassword(nameof(Password), password);
 
 				OnPropertyChanged(nameof(Password));
 			}
 		}
-		private string loginErrorMessage;
+		private string changeNameErrorMessage;
 
-		public string LoginErrorMessage
+		public string ChangeNameErrorMessage
 		{
-			get => loginErrorMessage;
+			get => changeNameErrorMessage;
 			set
 			{
-				loginErrorMessage = value;
-				OnPropertyChanged(nameof(LoginErrorMessage));
+				changeNameErrorMessage = value;
+				OnPropertyChanged(nameof(ChangeNameErrorMessage));
 			}
 		}
 
 		public bool HasErrors => _errorsViewModel.HasErrors;
-		public bool CanLogIn => !HasErrors;
-
-		public ICommand LoginCommand { get; }
-		public ICommand NavigateSignUpCommand { get; }
-		public ICommand NavigateMenuCommand { get; }
+		public bool CanChangeName => !HasErrors;
+		public ICommand NavigateSettingsAccountCommand { get; }
+		public ICommand ChangeNameCommand { get; }
 
 		public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
 
-		public LogInViewModel(AccountStore accountStore, NavigationStore navigationStore)
+		public SettingsAccountNameViewModel(AccountStore accountStore, NavigationStore navigationStore, NavigationStore settingsNavigationStore)
 		{
 			_errorsViewModel = new ErrorsViewModel();
 			_errorsViewModel.ErrorsChanged += ErrorsViewModel_ErrorsChanged;
@@ -75,11 +75,9 @@ namespace BattleCity.ViewModel
 			Username = "";
 			Password = "";
 
-			LoginCommand = new LogInCommand(this, accountStore, new NavigationService<MenuViewModel>(navigationStore, () => new MenuViewModel(accountStore, navigationStore)));
-			NavigateSignUpCommand = new NavigationCommand<SignUpViewModel>(new NavigationService<SignUpViewModel>(navigationStore, () => new SignUpViewModel(accountStore, navigationStore)));
-			NavigateMenuCommand = new NavigationCommand<MenuViewModel>(new NavigationService<MenuViewModel>(navigationStore, () => new MenuViewModel(accountStore, navigationStore)));
+			NavigateSettingsAccountCommand = new NavigationCommand<SettingsAccountViewModel>(new NavigationService<SettingsAccountViewModel>(settingsNavigationStore, () => new SettingsAccountViewModel(accountStore, navigationStore, settingsNavigationStore)));
+			ChangeNameCommand = new ChangeNameCommand(this, accountStore, new NavigationService<SettingsAccountViewModel>(settingsNavigationStore, () => new SettingsAccountViewModel(accountStore, navigationStore, settingsNavigationStore)));
 		}
-
 		public IEnumerable GetErrors(string propertyName)
 		{
 			return _errorsViewModel.GetErrors(propertyName);
@@ -88,7 +86,7 @@ namespace BattleCity.ViewModel
 		private void ErrorsViewModel_ErrorsChanged(object sender, DataErrorsChangedEventArgs e)
 		{
 			ErrorsChanged?.Invoke(this, e);
-			OnPropertyChanged(nameof(CanLogIn));
+			OnPropertyChanged(nameof(CanChangeName));
 		}
 	}
 }

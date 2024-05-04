@@ -11,8 +11,8 @@
         mc:Ignorable="d"
         Background="Black"
         Title="BattleCity" 
-        d:DesignHeight="{Binding Source={x:Static program:GameConfig.WindowHeight}}"
-        d:DesignWidth="{Binding Source={x:Static program:GameConfig.WindowWidth}}"
+        d:DesignHeight="560"
+        d:DesignWidth="620"
         MinHeight="200"
         WindowStartupLocation="CenterScreen"
         Icon="../../Resources/Images/Ico.ico">

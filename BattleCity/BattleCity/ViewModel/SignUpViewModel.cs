@@ -17,6 +17,8 @@ namespace BattleCity.ViewModel
 	{
 		private readonly ErrorsViewModel _errorsViewModel;
 
+		private readonly AccountValidationService validationService;
+
 		private string username;
 		public string Username
 		{
@@ -26,11 +28,7 @@ namespace BattleCity.ViewModel
 				username = value;
 				UserExistErrorMessage = null;
 
-				_errorsViewModel.ClearErrors(nameof(Username));
-				if (!Regex.IsMatch(username, @"^[a-zA-Z0-9_-]{3,16}$"))
-				{
-					_errorsViewModel.AddError(nameof(Username), "Invalid Username. You can enter 3-16 characters and use '-', '_'.");
-				}
+				validationService.ValidateUsername(nameof(Username), username);
 
 				OnPropertyChanged(nameof(Username));
 			}
@@ -44,17 +42,8 @@ namespace BattleCity.ViewModel
 			{
 				password = value;
 
-				_errorsViewModel.ClearErrors(nameof(Password));
-				if (!Regex.IsMatch(password, "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$"))
-				{
-					_errorsViewModel.AddError(nameof(Password), "Invalid. Password must contain at least 8 characters, at least 1 letter and 1 number.");
-				}
-
-				_errorsViewModel.ClearErrors(nameof(ConfirmPassword));
-				if (confirmPassword != password)
-				{
-					_errorsViewModel.AddError(nameof(ConfirmPassword), "Invalid. Passwords do not match!");
-				}
+				validationService.ValidatePassword(nameof(Password), password);
+				validationService.ValidateConfirmPassword(nameof(ConfirmPassword), password, confirmPassword);
 
 				OnPropertyChanged(nameof(Password));
 			}
@@ -67,11 +56,7 @@ namespace BattleCity.ViewModel
 			{
 				confirmPassword = value;
 
-				_errorsViewModel.ClearErrors(nameof(ConfirmPassword));
-				if (confirmPassword != password)
-				{
-					_errorsViewModel.AddError(nameof(ConfirmPassword), "Invalid. Passwords do not match!");
-				}
+				validationService.ValidateConfirmPassword(nameof(ConfirmPassword), password, confirmPassword);
 
 				OnPropertyChanged(nameof(ConfirmPassword));
 			}
@@ -99,6 +84,7 @@ namespace BattleCity.ViewModel
 		{
 			_errorsViewModel = new ErrorsViewModel();
 			_errorsViewModel.ErrorsChanged += ErrorsViewModel_ErrorsChanged;
+			validationService = new AccountValidationService(_errorsViewModel);
 
 			Username = "";
 			Password = "";

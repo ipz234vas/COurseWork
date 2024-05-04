@@ -12,11 +12,18 @@ namespace BattleCity.ViewModel
 {
 	public class SettingsViewModel : BaseViewModel
 	{
-		public ICommand NavigateMenuCommand { get; }
-
-		public SettingsViewModel(AccountStore accountStore, NavigationStore navigationStore)
+		private NavigationStore _settingsNavigationStore;
+		public BaseViewModel CurrentSettingsViewModel => _settingsNavigationStore.CurrentViewModel;
+		public SettingsViewModel(AccountStore accountStore, NavigationStore navigationStore, NavigationStore settingsNavigationStore = null)
 		{
-			NavigateMenuCommand = new NavigationCommand<MenuViewModel>(new NavigationService<MenuViewModel>(navigationStore, () => new MenuViewModel(accountStore, navigationStore)));
+			_settingsNavigationStore = settingsNavigationStore ?? new NavigationStore();
+			if (_settingsNavigationStore.CurrentViewModel == null)
+				_settingsNavigationStore.CurrentViewModel = new SettingsMenuViewModel(accountStore, navigationStore, _settingsNavigationStore);
+			_settingsNavigationStore.CurrentViewModelChanged += OnCurrentSettingsViewModelChanged;
+		}
+		private void OnCurrentSettingsViewModelChanged()
+		{
+			OnPropertyChanged(nameof(CurrentSettingsViewModel));
 		}
 	}
 }

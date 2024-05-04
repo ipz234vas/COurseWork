@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace BattleCity.ViewModel
@@ -43,6 +44,15 @@ namespace BattleCity.ViewModel
 		private void OnErrorsChanged(string propertyName)
 		{
 			ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
+		}
+
+		public void ValidateAndAddError(string propertyName, string value, string regexPattern, string errorMessage)
+		{
+			ClearErrors(propertyName);
+			if (!Regex.IsMatch(value, regexPattern))
+			{
+				AddError(propertyName, errorMessage);
+			}
 		}
 	}
 }

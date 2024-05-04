@@ -6,8 +6,8 @@
               xmlns:program="clr-namespace:BattleCity"
               xmlns:commands="clr-namespace:BattleCity.Commands"
               mc:Ignorable="d" 
-              Height="{Binding Source={x:Static program:GameConfig.WindowHeight}}"
-              Width="{Binding Source={x:Static program:GameConfig.WindowWidth}}"
+              Height="560"
+              Width="620"
               Background="Black">
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
         <TextBlock Text="BATTLE" Style="{StaticResource gameName}"/>

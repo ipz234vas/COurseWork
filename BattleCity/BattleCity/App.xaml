@@ -105,6 +105,18 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+        <Style BasedOn="{StaticResource submitButton}" TargetType="Button" x:Key="dangerSubmitButton">
+            <Setter Property="Background" Value="#FFF72121" />
+            <Setter Property="BorderBrush" Value="#FF0A0909" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Red" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="DarkRed" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
         <Style BasedOn="{StaticResource menuButton}" TargetType="Button" x:Key="ImportantTextButton">
             <Setter Property="Padding" Value="0 0 0 5"/>
             <Setter Property="Template">
