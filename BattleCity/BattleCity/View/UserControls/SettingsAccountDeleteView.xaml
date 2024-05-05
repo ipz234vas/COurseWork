@@ -5,8 +5,73 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BattleCity.View.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+                      Height="560"
+         Width="620"
+         Background="Black">
     <Grid>
-            
+        <Button Style="{StaticResource ImportantTextButton}" 
+         Command="{Binding NavigateSettingsAccountCommand}" 
+         Content="GO BACK" 
+         HorizontalAlignment="Left" 
+         VerticalAlignment="Top" 
+         Margin="30 30 0 0"
+         BorderBrush="White"/>
+        <Grid   Margin="20"
+         HorizontalAlignment="Center"
+         VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0"
+            Margin="0 50 0 0"
+            Padding="25 0 25 0"
+            HorizontalAlignment="Center"
+            Text="Delete"
+            Style="{StaticResource gameName}"
+            VerticalAlignment="Top"/>
+                <TextBlock Grid.Row="1"
+            HorizontalAlignment="Center"
+            Text="Account"
+            Style="{StaticResource gameName}"
+            VerticalAlignment="Top"/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock 
+             Grid.Row="0"
+             Text="{Binding SettingsAccountDeleteErrorMessage}"
+             Style="{StaticResource MessageTextBlock}"/>
+
+                <StackPanel Grid.Row="1" Margin="0 20 0 0">
+                    <TextBlock Text="Password" Style="{StaticResource mainText}" />
+                    <TextBox Text="{Binding Password, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Style="{StaticResource LogInTextBox}" MaxLength="25"/>
+                </StackPanel>
+                <StackPanel Grid.Row="2" Margin="0 20 0 0">
+                    <TextBlock Text="Account deletion is permanent and cannot be undone!" FontFamily="{StaticResource SecondaryTextFontFamily}" Foreground="Gray" FontSize="15" Padding="5"/>
+                    <CheckBox Content="I understand" IsChecked="{Binding IsAccountDeletionConfirmed, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                </StackPanel>
+                <Button Grid.Row="3" Style="{StaticResource dangerSubmitButton}"
+              Margin="0 20 0 0"
+              Command="{Binding DeleteAccountCommand}"
+              IsEnabled="{Binding CanDelete}"
+              Content="DELETE"
+              Foreground="White"
+              Width="300"/>
+            </Grid>
+        </Grid>
     </Grid>
 </UserControl>

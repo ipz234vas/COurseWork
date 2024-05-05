@@ -10,12 +10,13 @@ namespace BattleCity.Model
 {
 	public class Account
 	{
-		public int Id { get; set; }	
+		public int Id { get; set; }
 		public string Username { get; set; }
 		public string PasswordHash { get; set; }
 		public int? CurrentLevel { get; set; }
+		public ICollection<Level> Levels { get; set; }
 
-		public Account() 
+		public Account()
 		{
 
 		}

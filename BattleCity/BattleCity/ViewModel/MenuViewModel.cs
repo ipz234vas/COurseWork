@@ -25,7 +25,7 @@ namespace BattleCity.ViewModel
 		new MenuItemModel("PLAY", new NavigationCommand<SettingsViewModel>(new NavigationService<SettingsViewModel>(navigationStore, () => new SettingsViewModel(accountStore, navigationStore)))),
 		new MenuItemModel("CONSTRUCTION", new NavigationCommand<SettingsViewModel>(new NavigationService<SettingsViewModel>(navigationStore, () => new SettingsViewModel(accountStore, navigationStore)))),
 		new MenuItemModel("SETTINGS", new NavigationCommand<SettingsViewModel>(new NavigationService<SettingsViewModel>(navigationStore, () => new SettingsViewModel(accountStore, navigationStore)))),
-		new MenuItemModel("LEADERBOARD", new NavigationCommand<SettingsViewModel>(new NavigationService<SettingsViewModel>(navigationStore, () => new SettingsViewModel(accountStore, navigationStore))))
+		new MenuItemModel("LEADERBOARD", new NavigationCommand<LeaderboardViewModel>(new NavigationService<LeaderboardViewModel>(navigationStore, () => new LeaderboardViewModel(accountStore, navigationStore))))
 	};
 		}
 	}

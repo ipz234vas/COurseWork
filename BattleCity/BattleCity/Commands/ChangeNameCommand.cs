@@ -25,6 +25,11 @@ namespace BattleCity.Commands
 
 		public override void Execute(object parameter)
 		{
+			if(_accountStore.CurrentAccount.Id == 1)
+			{
+				_settingsAccountNameViewModel.ChangeNameErrorMessage = "Cannot change admin name";
+				return;
+			}
 			using (var context = new ApplicationDbContext())
 			{
 				Account account = context.Accounts.FirstOrDefault(Account => Account.Username == _settingsAccountNameViewModel.Username);

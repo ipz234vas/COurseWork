@@ -10,6 +10,7 @@ namespace BattleCity.Model
 	public class ApplicationDbContext : DbContext
 	{
 		public DbSet<Account> Accounts { get; set; }
+		public DbSet<Level> Levels { get; set; }
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{

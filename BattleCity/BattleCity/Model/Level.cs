@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,11 +13,12 @@ namespace BattleCity.Model
 
         public string Title { get; set; }
 
-        public string Map { get; set; }
+        public string MapData { get; set; }
 
         public string EnemyComposition { get; set; }
-
-        public int CreatorId { get; set; }
+		[ForeignKey("Creator")]
+		public int CreatorId { get; set; }
+        public Account Creator { get; set; }
 
         public Level()
         {
@@ -26,7 +28,7 @@ namespace BattleCity.Model
         public Level(string title, string map, string enemyComposition, int creatorId)
         {
             Title = title;
-            Map = map;
+            MapData = map;
             EnemyComposition = enemyComposition;
             CreatorId = creatorId;
         }

@@ -32,6 +32,9 @@
                 <DataTemplate DataType="{x:Type vm:SettingsAccountDeleteViewModel}">
                     <vuc:SettingsAccountDeleteView />
                 </DataTemplate>
+                <DataTemplate DataType="{x:Type vm:SettingsGameViewModel}">
+                    <vuc:SettingsGameView />
+                </DataTemplate>
             </ContentControl.Resources>
         </ContentControl>
     </Viewbox>
