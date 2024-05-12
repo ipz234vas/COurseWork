@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="BattleCity.View.UserControls.PlayerSelectionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BattleCity.View.UserControls"
+             mc:Ignorable="d" 
+             Height="560" d:DesignWidth="620">
+    <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0" Content="1 PLAYER" Command="{Binding Is1PlayerCommand}" Style="{StaticResource submitButton}" Foreground="Black"/>
+        <Button Grid.Row="1" Content="2 PLAYER" Command="{Binding Is2PlayerCommand}" Style="{StaticResource submitButton}" Foreground="Black"/>
+    </Grid>
+</UserControl>

@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="BattleCity.View.UserControls.GameFieldView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BattleCity.View.UserControls"
+             xmlns:BattleCity="clr-namespace:BattleCity"
+             mc:Ignorable="d" 
+             Width="520" Height="520" Background="Black">
+    <Canvas>
+        <ItemsControl ItemsSource="{Binding UnitViews}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Canvas/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
+    </Canvas>
+</UserControl>

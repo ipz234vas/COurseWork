@@ -28,11 +28,20 @@
                 <DataTemplate DataType="{x:Type vm:MenuViewModel}">
                     <vuc:MenuView />
                 </DataTemplate>
+                <DataTemplate DataType="{x:Type vm:LevelsViewModel}">
+                    <vuc:LevelsView />
+                </DataTemplate>
                 <DataTemplate DataType="{x:Type vm:SettingsViewModel}">
                     <vuc:SettingsView />
                 </DataTemplate>
                 <DataTemplate DataType="{x:Type vm:LeaderboardViewModel}">
                     <vuc:LeaderboardView />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type vm:PlayerSelectionViewModel}">
+                    <vuc:PlayerSelectionView />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type vm:GamePlayViewModel}">
+                    <vuc:GamePlayView />
                 </DataTemplate>
             </ContentControl.Resources>
         </ContentControl>

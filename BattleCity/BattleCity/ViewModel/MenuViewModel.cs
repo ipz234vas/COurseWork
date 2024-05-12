@@ -17,15 +17,15 @@ namespace BattleCity.ViewModel
 {
     public class MenuViewModel : BaseViewModel
     {
-        public ObservableCollection<MenuItemModel> menuList { get; }
+        public ObservableCollection<ListItemModel> menuList { get; }
         public MenuViewModel(AccountStore accountStore, NavigationStore navigationStore) 
         {
-            menuList = new ObservableCollection<MenuItemModel>
+            menuList = new ObservableCollection<ListItemModel>
 	{
-		new MenuItemModel("PLAY", new NavigationCommand<SettingsViewModel>(new NavigationService<SettingsViewModel>(navigationStore, () => new SettingsViewModel(accountStore, navigationStore)))),
-		new MenuItemModel("CONSTRUCTION", new NavigationCommand<SettingsViewModel>(new NavigationService<SettingsViewModel>(navigationStore, () => new SettingsViewModel(accountStore, navigationStore)))),
-		new MenuItemModel("SETTINGS", new NavigationCommand<SettingsViewModel>(new NavigationService<SettingsViewModel>(navigationStore, () => new SettingsViewModel(accountStore, navigationStore)))),
-		new MenuItemModel("LEADERBOARD", new NavigationCommand<LeaderboardViewModel>(new NavigationService<LeaderboardViewModel>(navigationStore, () => new LeaderboardViewModel(accountStore, navigationStore))))
+		new ListItemModel("PLAY", new NavigationCommand<LevelsViewModel>(new NavigationService<LevelsViewModel>(navigationStore, () => new LevelsViewModel(accountStore, navigationStore)))),
+		new ListItemModel("CONSTRUCTION", new NavigationCommand<SettingsViewModel>(new NavigationService<SettingsViewModel>(navigationStore, () => new SettingsViewModel(accountStore, navigationStore)))),
+		new ListItemModel("SETTINGS", new NavigationCommand<SettingsViewModel>(new NavigationService<SettingsViewModel>(navigationStore, () => new SettingsViewModel(accountStore, navigationStore)))),
+		new ListItemModel("LEADERBOARD", new NavigationCommand<LeaderboardViewModel>(new NavigationService<LeaderboardViewModel>(navigationStore, () => new LeaderboardViewModel(accountStore, navigationStore))))
 	};
 		}
 	}

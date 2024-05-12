@@ -12,7 +12,10 @@
     <None Remove="Resources\Fonts\BattleCity.ttf" />
     <None Remove="Resources\Fonts\BattleCityInfo.ttf" />
     <None Remove="Resources\Fonts\easvhs.ttf" />
+    <None Remove="Resources\Images\Blocks\BrickWall.png" />
+    <None Remove="Resources\Images\Blocks\ConcreteWall.png" />
     <None Remove="Resources\Images\Ico.ico" />
+    <None Remove="Resources\Images\Tanks\Tank.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,9 +26,14 @@
     </Content>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.18" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.18" />
+    <Resource Include="Resources\Images\Blocks\BrickWall.png" />
+    <Resource Include="Resources\Images\Blocks\ConcreteWall.png">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Images\Ico.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\Images\Tanks\Tank.png" />
   </ItemGroup>
 
 </Project>

@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BattleCity
+namespace BattleCity.Types
 {
-	public class GameConfig
+	public enum MovementDirection
 	{
-		static GameConfig()
-		{
-			
-		}
+		Left,
+		Right,
+		Up,
+		Down
 	}
 }

@@ -7,18 +7,18 @@ using System.Windows.Input;
 
 namespace BattleCity.Model
 {
-    public class MenuItemModel
+    public class ListItemModel
     {
         public string Text { get; set; }
         public ICommand Command { get; set; }
 
-        public MenuItemModel (string text, ICommand command)
+        public ListItemModel (string text, ICommand command)
         {
             Text = text;
             Command = command;
         }
 
-        public MenuItemModel()
+        public ListItemModel()
         {
 
         }
