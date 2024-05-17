@@ -8,14 +8,134 @@
              Height="560"
              Width="620"
              Background="Black">
+    <UserControl.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontFamily" Value="{StaticResource SecondaryTextFontFamily}" />
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <Style TargetType="ComboBox" BasedOn="{StaticResource CustomComboBox}" />
+    </UserControl.Resources>
     <Grid>
         <Button Style="{StaticResource ImportantTextButton}" 
-        Command="{Binding NavigateSettingsMenuCommand}" 
-        Content="GO BACK" 
-        HorizontalAlignment="Left" 
-        VerticalAlignment="Top" 
-        Margin="30 30 0 0"
-        BorderBrush="White"/>
-            
+                Command="{Binding NavigateSettingsMenuCommand}" 
+                Content="GO BACK" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top" 
+                Margin="30,30,0,0"
+                BorderBrush="White"/>
+        <Grid VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <TextBlock
+                    Grid.Row="0"
+                    HorizontalAlignment="Center"
+                    Text="Settings"
+                    Style="{StaticResource gameName}"
+                    VerticalAlignment="Top"/>
+                <TextBlock 
+                    Grid.Row="1"
+                    Margin="0 10"
+                    HorizontalAlignment="Center"
+                    Text="{Binding ErrorMessage}"
+                    Style="{StaticResource MessageTextBlock}"
+                    VerticalAlignment="Top"/>
+            </Grid>
+            <Grid Grid.Row="1" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" Width="600">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.Resources>
+                    <Style TargetType="StackPanel">
+                        <Setter Property="Margin" Value="2" />
+                        <Setter Property="HorizontalAlignment" Value="Center" />
+                    </Style>
+                </Grid.Resources>
+                <StackPanel Grid.Column="0" Margin="0 20">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="PLAYER 1" Foreground="Red" FontSize="24" Margin="0 10"/>
+                        <StackPanel Grid.Row="1" Orientation="Horizontal">
+                            <TextBlock Text="Up: " Width="50"/>
+                            <ComboBox Width="100" SelectedItem="{Binding KeyUp1Player, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" ItemsSource="{Binding AvailableKeys}" />
+                        </StackPanel>
+                        <StackPanel Grid.Row="2" Orientation="Horizontal">
+                            <TextBlock Text="Down: " Width="50"/>
+                            <ComboBox Width="100" SelectedItem="{Binding KeyDown1Player, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" ItemsSource="{Binding AvailableKeys}"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="3" Orientation="Horizontal">
+                            <TextBlock Text="Left: " Width="50"/>
+                            <ComboBox Width="100" SelectedItem="{Binding KeyLeft1Player, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" ItemsSource="{Binding AvailableKeys}"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="4" Orientation="Horizontal">
+                            <TextBlock Text="Right: " Width="50"/>
+                            <ComboBox Width="100" SelectedItem="{Binding KeyRight1Player, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" ItemsSource="{Binding AvailableKeys}"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="5" Orientation="Horizontal">
+                            <TextBlock Text="Shoot: " Width="50"/>
+                            <ComboBox Width="100" SelectedItem="{Binding KeyShoot1Player, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" ItemsSource="{Binding AvailableKeys}"/>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Margin="0 20">
+                    <TextBlock Grid.Row="0" Text="PLAYER 2"  Foreground="Red" FontSize="24" Margin="0 10"/>
+                    <StackPanel Grid.Row="1" Orientation="Horizontal">
+                        <TextBlock Text="Up: " Width="50"/>
+                        <ComboBox Width="100" SelectedItem="{Binding KeyUp2Player, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" ItemsSource="{Binding AvailableKeys}"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="2" Orientation="Horizontal">
+                        <TextBlock Text="Down: " Width="50"/>
+                        <ComboBox Width="100" SelectedItem="{Binding KeyDown2Player, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" ItemsSource="{Binding AvailableKeys}"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="3" Orientation="Horizontal">
+                        <TextBlock Text="Left: " Width="50"/>
+                        <ComboBox Width="100" SelectedItem="{Binding KeyLeft2Player, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" ItemsSource="{Binding AvailableKeys}"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="4" Orientation="Horizontal">
+                        <TextBlock Text="Right: " Width="50"/>
+                        <ComboBox Width="100" SelectedItem="{Binding KeyRight2Player, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" ItemsSource="{Binding AvailableKeys}"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="5" Orientation="Horizontal">
+                        <TextBlock Text="Shoot: " Width="50"/>
+                        <ComboBox Width="100" SelectedItem="{Binding KeyShoot2Player, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" ItemsSource="{Binding AvailableKeys}"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Text="VOLUME" Foreground="Red" FontSize="24" Margin="0 10"/>
+                        <StackPanel Grid.Row="1" Orientation="Horizontal">
+                            <TextBlock Text="0" Margin="5"/>
+                            <Slider  Minimum="0" Maximum="100" Value="{Binding Volume, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Width="200" HorizontalAlignment="Center"/>
+                            <TextBlock Text="100" Margin="5"/>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </Grid>
     </Grid>
 </UserControl>

@@ -32,10 +32,10 @@ namespace BattleCity.View.UserControls
 
 		private void GamePlayView_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
 		{
-			if (DataContext is GamePlayViewModel gameViewModel)
+			if (DataContext is GameFieldViewModel gameViewModel)
 			{
 				// Отримати доступ до GamePlayViewModel
-				GameFieldViewModel gamePlayViewModel = gameViewModel.GameFieldViewModel;
+				GameFieldViewModel gamePlayViewModel = gameViewModel;
 				if (gamePlayViewModel != null)
 				{
 					this.gamePlayViewModel = gamePlayViewModel;
@@ -56,6 +56,7 @@ namespace BattleCity.View.UserControls
 			{
 				gamePlayViewModel?.Player2KeyDown(e.Key);
 			}
+			e.Handled = true;
 		}
 		protected override void OnKeyUp(KeyEventArgs e)
 		{
@@ -71,6 +72,7 @@ namespace BattleCity.View.UserControls
 			{
 				gamePlayViewModel?.Player2KeyUp(e.Key);
 			}
+			e.Handled = true;
 		}
 	}
 }

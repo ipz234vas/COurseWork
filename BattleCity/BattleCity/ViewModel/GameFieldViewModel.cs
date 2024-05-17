@@ -1,6 +1,7 @@
 ﻿using BattleCity.Model;
 using BattleCity.Model.UnitModels;
 using BattleCity.Services;
+using BattleCity.Stores;
 using BattleCity.Types;
 using BattleCity.View.UnitViews;
 using System;
@@ -24,28 +25,26 @@ namespace BattleCity.ViewModel
 		public ControlService ControlFor1Player;
 		public ControlService ControlFor2Player;
 
-		public GameFieldViewModel()
+		public GameFieldViewModel(LevelStore levelStore)
 		{
-			Level _level = new Level();
-			_level.MapData = "#@@@@@                           @@@@@@@@@@@@@@@@@  @@@@@@@@@@@@@@@@           @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" +
-				"                                                      #####    #####################     @@@@@         @####             @" +
-				"@@@                         @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@                              @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" +
-				"@@@@@@@@@@@@@@@@@@@@@@@@@@@@                    @@@@@@@@@@@@                       @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" +
-				"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@####   @@@@@@@@@@@@@@@@@@@@@####@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@    @@@@@@@@" +
-				"#@@@@@                           @@@@@@@@@@@@@@@@@  @@@@@@@@@@@@@@@@           @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@                                                      #####    #####################     @@@@@         @####             @@@@                         @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@                              @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@                    @@@@@@@@@@@@                       @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@####   @@@@@@@@@@@@@@@@@@@@@####@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@####  @@@@@@@@@@@@@@@@@@@@@@@@@@@###@@@@@@#";
 			UnitModels.CollectionChanged += UnitsModel_CollectionChanged;
+
+			Level _level = levelStore.CurrentLevel;
 			GenerateMap(_level.MapData);
 
-			MoveableUnit player1 = new MoveableUnit(Unit.NextID, 50, 100, GameConfiguration.TankWidth, GameConfiguration.TankHeight, TypeUnit.SmallTankPlayer, 5);
+			MoveableUnit player1 = new MoveableUnit(Unit.NextID, 8 * GameConfiguration.UnitWidth, 24 * GameConfiguration.UnitHeight, GameConfiguration.TankWidth, GameConfiguration.TankHeight, TypeUnit.SmallTankPlayer, 5);
 			player1.PropertyChanged += Update;
 			UnitModels.Add(player1);
-			MoveableUnit player2 = new MoveableUnit(Unit.NextID, 200, 80, GameConfiguration.TankWidth, GameConfiguration.TankHeight, TypeUnit.SmallTankPlayer, 5);
-			player2.PropertyChanged += Update;
-			UnitModels.Add(player2);
-
+			RemoveUnitsOnPosition(player1);
 			ControlFor1Player = new ControlService(player1);
-			ControlFor2Player = new ControlService(player2, true);
-
+			if (levelStore.Is2Players)
+			{
+				MoveableUnit player2 = new MoveableUnit(Unit.NextID, 16 * GameConfiguration.UnitWidth, 24 * GameConfiguration.UnitHeight, GameConfiguration.TankWidth, GameConfiguration.TankHeight, TypeUnit.SmallTankPlayer, 5);
+				player2.PropertyChanged += Update;
+				UnitModels.Add(player2);
+				RemoveUnitsOnPosition(player2);
+				ControlFor2Player = new ControlService(player2, true);
+			}
 			CheckCollisionService.units = UnitModels;
 
 			timer = new DispatcherTimer();
@@ -112,6 +111,19 @@ namespace BattleCity.ViewModel
 					index++;
 				}
 			}
+		}
+		public void RemoveUnitsOnPosition(Unit currentUnit)
+		{
+			List<Unit> unitsForRemove = new List<Unit>();
+			foreach (Unit unit in UnitModels)
+			{
+				if (CheckCollisionService.CheckCollision(unit, currentUnit) && unit != currentUnit) unitsForRemove.Add(unit);
+			}
+			foreach (Unit unit in unitsForRemove)
+			{
+				UnitModels.Remove(unit);
+			}
+			unitsForRemove.Clear();
 		}
 		public void Update(int id, PropertiesType prop, object value)
 		{

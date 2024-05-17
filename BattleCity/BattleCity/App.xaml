@@ -177,5 +177,139 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <ControlTemplate x:Key="ComboBoxToggleButton" TargetType="ToggleButton">
+            <Border x:Name="templateRoot" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <ContentPresenter Grid.Column="0" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    <Polygon Grid.Column="1" Fill="White" HorizontalAlignment="Center" Margin="5" VerticalAlignment="Center" Points="0,0 4,4 8,0" />
+                </Grid>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter TargetName="templateRoot" Property="Background" Value="DarkGray" />
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="templateRoot" Property="Background" Value="Gray" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter TargetName="templateRoot" Property="Background" Value="Black" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        
+        <ControlTemplate x:Key="ComboBoxTextBox" TargetType="TextBox">
+            <Border x:Name="PART_ContentHost" Focusable="False" Background="{TemplateBinding Background}" />
+        </ControlTemplate>
+
+        <Style x:Key="CustomComboBox" TargetType="ComboBox">
+            <Setter Property="Background" Value="DarkGray"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="ItemContainerStyle">
+                <Setter.Value>
+                    <Style TargetType="ComboBoxItem">
+                        <Setter Property="Margin" Value="0,1"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ComboBoxItem">
+                                    <Border x:Name="Border" Padding="2" SnapsToDevicePixels="true" Background="#333333">
+                                        <ContentPresenter/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsSelected" Value="true">
+                                            <Setter TargetName="Border" Property="Background" Value="LightGray"/>
+                                            <Setter Property="Foreground" Value="Black"/>
+                                        </Trigger>
+                                        <Trigger Property="IsMouseOver" Value="true">
+                                            <Setter TargetName="Border" Property="Background" Value="Gray"/>
+                                            <Setter Property="Foreground" Value="White"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBox">
+                        <Grid>
+                            <ToggleButton 
+                         Name="ToggleButton" 
+                         Grid.Column="2"
+                         Template="{StaticResource ComboBoxToggleButton}"
+                         Background="{TemplateBinding Background}"
+                         BorderBrush="{TemplateBinding BorderBrush}"
+                         BorderThickness="{TemplateBinding BorderThickness}"
+                         Focusable="false"
+                         IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                         ClickMode="Press">
+                            </ToggleButton>
+                            <ContentPresenter
+                         Name="ContentSite"
+                         IsHitTestVisible="False"
+                         Content="{TemplateBinding SelectionBoxItem}"
+                         ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                         ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                         VerticalAlignment="Center"
+                         HorizontalAlignment="Left"
+                         Margin="3,3,23,3">
+                            </ContentPresenter>
+                            <TextBox x:Name="PART_EditableTextBox"
+                         Style="{x:Null}"
+                         Template="{StaticResource ComboBoxTextBox}"
+                         HorizontalAlignment="Left" 
+                         VerticalAlignment="Center" 
+                         Margin="3,3,23,3"
+                         Focusable="True"
+                         Background="DarkGray"
+                         Foreground="White"
+                         Visibility="Hidden"
+                         IsReadOnly="{TemplateBinding IsReadOnly}"/>
+                            <Popup 
+                         Name="Popup"
+                         Placement="Bottom"
+                         IsOpen="{TemplateBinding IsDropDownOpen}"
+                         AllowsTransparency="True" 
+                         Focusable="False"
+                         PopupAnimation="Slide">
+                                <Grid 
+                             Name="DropDown"
+                             SnapsToDevicePixels="True"                
+                             MaxHeight="150"
+                             MinWidth="{TemplateBinding ActualWidth}"
+                             Background="DarkSlateGray">
+                                    <Border 
+                                 x:Name="DropDownBorder"
+                                 Background="DarkGray"
+                                 BorderBrush="Black"
+                                 BorderThickness="1"/>
+                                    <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True">
+                                        <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" />
+                                    </ScrollViewer>
+                                </Grid>
+                            </Popup>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="HasItems" Value="False">
+                                <Setter TargetName="DropDownBorder" Property="MinHeight" Value="95"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Foreground" Value="Gray"/>
+                            </Trigger>
+                            <Trigger Property="IsEditable" Value="True">
+                                <Setter Property="IsTabStop" Value="False"/>
+                                <Setter TargetName="PART_EditableTextBox" Property="Visibility" Value="Visible"/>
+                                <Setter TargetName="ContentSite" Property="Visibility" Value="Hidden"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Application.Resources>
 </Application>

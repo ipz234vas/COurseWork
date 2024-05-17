@@ -18,13 +18,13 @@ namespace BattleCity.Services
 			switch (typeUnit)
 			{
 				case TypeUnit.BrickWall:
-					view = new UnitView { Source = new BitmapImage(new Uri(@"Resources/Images/Blocks/BrickWall.png", UriKind.Relative)) };
+					view = new UnitView { Source = new BitmapImage(new Uri(@"../../Resources/Images/Blocks/BrickWall.png", UriKind.Relative)) };
 					break;
 				case TypeUnit.ConcreteWall:
-					view = new UnitView { Source = new BitmapImage(new Uri(@"Resources/Images/Blocks/ConcreteWall.png", UriKind.Relative)) };
+					view = new UnitView { Source = new BitmapImage(new Uri(@"../../Resources/Images/Blocks/ConcreteWall.png", UriKind.Relative)) };
 					break;
 				case TypeUnit.SmallTankPlayer:
-					view = new UnitView { Source = new BitmapImage(new Uri(@"Resources/Images/Tanks/Tank.png", UriKind.Relative)) };
+					view = new UnitView { Source = new BitmapImage(new Uri(@"../../Resources/Images/Tanks/Tank.png", UriKind.Relative)) };
 					break;
 				default:
 					view = new UnitView();

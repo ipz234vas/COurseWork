@@ -21,7 +21,7 @@ namespace BattleCity.ViewModel
 		}
 		public GamePlayViewModel(AccountStore accountStore, NavigationStore navigationStore, LevelStore levelStore)
 		{
-			GameFieldViewModel = new GameFieldViewModel();
+			GameFieldViewModel = new GameFieldViewModel(levelStore);
 		}
 	}
 }

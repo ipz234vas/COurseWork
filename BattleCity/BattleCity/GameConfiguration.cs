@@ -26,8 +26,10 @@ namespace BattleCity
 		public static int UserControHeight = 28 * UnitHeight;
 
 		public static int Interval = 20;
+		public static int Volume = 50;
 
-		public static Key KeyUp1Player = Key.W;
+        public static HashSet<Key> UsedKeys { get; } = new HashSet<Key>();
+        public static Key KeyUp1Player = Key.W;
 		public static Key KeyDown1Player = Key.S;
 		public static Key KeyLeft1Player = Key.A;
 		public static Key KeyRight1Player = Key.D;
@@ -35,5 +37,20 @@ namespace BattleCity
 		public static Key KeyDown2Player = Key.Down;
 		public static Key KeyLeft2Player = Key.Left;
 		public static Key KeyRight2Player = Key.Right;
+		public static Key KeyShoot1Player = Key.Space;
+		public static Key KeyShoot2Player = Key.Enter;
+		static GameConfiguration()
+		{
+            UsedKeys.Add(KeyUp1Player);
+            UsedKeys.Add(KeyUp2Player);
+            UsedKeys.Add(KeyDown1Player);
+            UsedKeys.Add(KeyDown2Player);
+            UsedKeys.Add(KeyLeft1Player);
+            UsedKeys.Add(KeyLeft2Player);
+            UsedKeys.Add(KeyRight1Player);
+            UsedKeys.Add(KeyRight2Player);
+			UsedKeys.Add(KeyShoot1Player);
+			UsedKeys.Add(KeyShoot2Player);
+        }
 	}
 }

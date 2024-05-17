@@ -20,7 +20,7 @@
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="*" />
                                                 </Grid.RowDefinitions>
-                                                <Button Content="{Binding Text}" Command="{Binding Command}"/>
+                                                <Button Content="{Binding Text}" Command="{Binding Command}" IsEnabled="{Binding IsAvailable}"/>
                                             </Grid>
                                         </Border>
                                     </ControlTemplate>

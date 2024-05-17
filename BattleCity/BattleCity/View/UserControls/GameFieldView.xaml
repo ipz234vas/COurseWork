@@ -6,9 +6,9 @@
              xmlns:local="clr-namespace:BattleCity.View.UserControls"
              xmlns:BattleCity="clr-namespace:BattleCity"
              mc:Ignorable="d" 
-             Width="520" Height="520" Background="Black">
+             Background="Black">
     <Canvas>
-        <ItemsControl ItemsSource="{Binding UnitViews}">
+        <ItemsControl ItemsSource="{Binding UnitViews}" Name="Canva">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <Canvas/>

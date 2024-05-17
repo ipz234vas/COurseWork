@@ -30,22 +30,24 @@ namespace BattleCity.ViewModel
 			NavigateMenuCommand = new NavigationCommand<MenuViewModel>(new NavigationService<MenuViewModel>(navigationStore, () => new MenuViewModel(accountStore, navigationStore)));
 			LoadLeaderBoard();
 		}
-		private void LoadLeaderBoard()
+		private async void LoadLeaderBoard()
 		{
-			using (var context = new ApplicationDbContext())
-			{
-				var Accounts = context.Accounts.Where(account => account.CurrentLevel != null).ToList();
+			await Task.Run(() => {
+                using (var context = new ApplicationDbContext())
+                {
+                    var Accounts = context.Accounts.Where(account => account.CurrentLevel != null).ToList();
 
-				var sortedAccounts = Accounts.OrderByDescending(account => account.CurrentLevel);
+                    var sortedAccounts = Accounts.OrderByDescending(account => account.CurrentLevel);
 
-				var selectedAccounts = sortedAccounts.Select(account => new Account
-				{
-					Username = account.Username,
-					CurrentLevel = account.CurrentLevel
-				});
+                    var selectedAccounts = sortedAccounts.Select(account => new Account
+                    {
+                        Username = account.Username,
+                        CurrentLevel = account.CurrentLevel
+                    });
 
-				this.Accounts = new ObservableCollection<Account>(selectedAccounts);
-			}
+                    this.Accounts = new ObservableCollection<Account>(selectedAccounts);
+                }
+            });
 		}
 	}
 }
