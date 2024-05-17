@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BattleCity.Model.UnitModels
 {
-	public class MoveableUnit : Unit
+	public class MoveableObject : BaseObjectModel
 	{
 		private int speed;
 		public int Speed
@@ -23,13 +23,14 @@ namespace BattleCity.Model.UnitModels
 				}
 			}
 		}
-		public MoveableUnit(int id, int x, int y, int width, int height, TypeUnit type, int speed) : base(id, x, y, width, height, type)
+		public MoveableObject(int id, int x, int y, int width, int height, TypeObject type, int speed) : base(id, x, y, width, height, type)
 		{
 			Speed = speed;
 		}
 		public bool CanMove(MovementDirection movement)
 		{
-			MoveableUnit TestCollisia = new MoveableUnit(ID, X, Y, Width, Height, Type, Speed);
+            Properties[PropertiesType.MovementDirection] = movement;
+            MoveableObject TestCollisia = new MoveableObject(ID, X, Y, Width, Height, Type, Speed);
 			switch (movement)
 			{
 				case MovementDirection.Left:
@@ -49,7 +50,7 @@ namespace BattleCity.Model.UnitModels
 					break;
 			}
 			if (CheckCollisionService.CheckCollisionWithBorder(TestCollisia)) return false;
-			foreach (var unit in CheckCollisionService.units)
+			foreach (var unit in CheckCollisionService.objects)
 			{
 				if (ID != unit.ID)
 				{
@@ -58,7 +59,7 @@ namespace BattleCity.Model.UnitModels
 			}
 			return true;
 		}
-		public void Move(MovementDirection movement)
+		public virtual void Move(MovementDirection movement)
 		{
 			switch (movement)
 			{

@@ -1,4 +1,5 @@
-﻿using BattleCity.Model.UnitModels;
+﻿using BattleCity.Model.ObjectModels;
+using BattleCity.Model.UnitModels;
 using BattleCity.Types;
 using System;
 using System.Collections.Generic;
@@ -16,34 +17,34 @@ namespace BattleCity.Services
 		private Key keyDown = GameConfiguration.KeyDown1Player;
 		private Key keyLeft = GameConfiguration.KeyLeft1Player;
 		private Key keyRight = GameConfiguration.KeyRight1Player;
+        private DispatcherTimer timer;
+		public Player CurrentPlayer;
 
-		public ControlService(MoveableUnit currentPlayer, bool IsSecondPlayer = false)
+        private bool isUpKeyPressed;
+        private bool isDownKeyPressed;
+        private bool isLeftKeyPressed;
+        private bool isRightKeyPressed;
+
+        public ControlService(Player currentPlayer)
 		{
 			CurrentPlayer = currentPlayer;
 
-			if (IsSecondPlayer)
+			if (CurrentPlayer.IsSecondPlayer)
 			{
 				keyUp = GameConfiguration.KeyUp2Player;
 				keyDown = GameConfiguration.KeyDown2Player;
 				keyLeft = GameConfiguration.KeyLeft2Player;
 				keyRight = GameConfiguration.KeyRight2Player;
 			}
+			CurrentPlayer.CreateTank();
 
 			timer = new DispatcherTimer();
-			timer.Interval = TimeSpan.FromMilliseconds(GameConfiguration.Interval);
+			timer.Interval = TimeSpan.FromMilliseconds(GameConfiguration.MainInterval);
 			timer.Tick += TickChecker;
 		}
-		private DispatcherTimer timer;
-		public MoveableUnit CurrentPlayer;
-
-		private bool isUpKeyPressed;
-		private bool isDownKeyPressed;
-		private bool isLeftKeyPressed;
-		private bool isRightKeyPressed;
-
 		private void StartTickChecker()
 		{
-			if (!timer.IsEnabled)
+			if (!timer.IsEnabled && CurrentPlayer.PlayerTank != null)
 			{
 				TickChecker(null, EventArgs.Empty); 
 				timer.Start();
@@ -54,6 +55,7 @@ namespace BattleCity.Services
 		{
 			if (!isUpKeyPressed && !isDownKeyPressed && !isLeftKeyPressed && !isRightKeyPressed)
 			{
+				CurrentPlayer.PlayerTank.Stop();
 				timer.Stop();
 			}
 		}
@@ -80,22 +82,26 @@ namespace BattleCity.Services
 										(isDownKeyPressed && isLeftKeyPressed) || (isDownKeyPressed && isRightKeyPressed) || (isLeftKeyPressed && isRightKeyPressed);
 		private void TickChecker(object? sender, EventArgs e)
 		{
-			if (IsFewKeyPressed) return;
-			if (isUpKeyPressed && CurrentPlayer.CanMove(MovementDirection.Up))
+			if (IsFewKeyPressed)
 			{
-				CurrentPlayer.Move(MovementDirection.Up);
+                CurrentPlayer.PlayerTank.Stop();
+                return;
 			}
-			if (isDownKeyPressed && CurrentPlayer.CanMove(MovementDirection.Down))
+			if (isUpKeyPressed && CurrentPlayer.PlayerTank.CanMove(MovementDirection.Up))
 			{
-				CurrentPlayer.Move(MovementDirection.Down);
+				CurrentPlayer.PlayerTank.Move(MovementDirection.Up);
 			}
-			if (isLeftKeyPressed && CurrentPlayer.CanMove(MovementDirection.Left))
+			if (isDownKeyPressed && CurrentPlayer.PlayerTank.CanMove(MovementDirection.Down))
 			{
-				CurrentPlayer.Move(MovementDirection.Left);
+				CurrentPlayer.PlayerTank.Move(MovementDirection.Down);
 			}
-			if (isRightKeyPressed && CurrentPlayer.CanMove(MovementDirection.Right))
+			if (isLeftKeyPressed && CurrentPlayer.PlayerTank.CanMove(MovementDirection.Left))
 			{
-				CurrentPlayer.Move(MovementDirection.Right);
+				CurrentPlayer.PlayerTank.Move(MovementDirection.Left);
+			}
+			if (isRightKeyPressed && CurrentPlayer.PlayerTank.CanMove(MovementDirection.Right))
+			{
+				CurrentPlayer.PlayerTank.Move(MovementDirection.Right);
 			}
 		}
 	}

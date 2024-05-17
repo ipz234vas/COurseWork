@@ -13,20 +13,31 @@ namespace BattleCity
 		public const char ConcreteWallSymbol = '#';
 		public const char EmptySpaceSymbol = ' ';
 
-		public static int UnitWidth = 20;
-		public static int UnitHeight = 20;
+		public static int ObjectWidth = 20;
+		public static int ObjectHeight = 20;
 
 		public static int TankWidth = 40;
 		public static int TankHeight = 40;
 
-		public static int SceneWidth = 26 * UnitWidth;
-		public static int SceneHeight = 26 * UnitHeight;
+		public static int SceneWidth = 26 * ObjectWidth;
+		public static int SceneHeight = 26 * ObjectHeight;
 
-		public static int UserControlWidth = 31 * UnitWidth;
-		public static int UserControHeight = 28 * UnitHeight;
+		public static int UserControlWidth = 31 * ObjectWidth;
+		public static int UserControHeight = 28 * ObjectHeight;
 
-		public static int Interval = 20;
+		public static int MainInterval = 20;
+		public static int SpawnIntervalInSeconds = 1;
+
 		public static int Volume = 50;
+
+		public static int XFor1Enemy = 0;
+        public static int XFor2Enemy = 12 * ObjectWidth;
+        public static int XFor3Enemy = 24 * ObjectWidth;
+        public static int YForEnemy = 0;
+        public static int XFor1Player = 8 * ObjectWidth;
+        public static int XFor2Player = 16 * ObjectWidth;
+        public static int YForPlayer = 24 * ObjectHeight;
+
 
         public static HashSet<Key> UsedKeys { get; } = new HashSet<Key>();
         public static Key KeyUp1Player = Key.W;

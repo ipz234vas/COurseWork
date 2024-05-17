@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BattleCity.Types
 {
-	public enum TypeUnit
+	public enum TypeObject
 	{
 		Bullet,
 		ConcreteWallBullet,

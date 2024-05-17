@@ -9,8 +9,8 @@ namespace BattleCity.Types
 	public enum PropertiesType
 	{
 		Speed,
-		Direction,
-		IsParking,
+		MovementDirection,
+		IsMoving,
 		X,
 		Y,
 		ID,

@@ -9,19 +9,19 @@ using System.Windows;
 
 namespace BattleCity.View.UnitViews
 {
-	public class UnitView : Image
+	public class BaseObjectView : Image
 	{
 		public int ID { get; set; }
 
 		#region DependencyProperty
-		public TypeUnit TypeUnit
+		public TypeObject TypeUnit
 		{
-			get { return (TypeUnit)GetValue(TypeUnitProperty); }
+			get { return (TypeObject)GetValue(TypeUnitProperty); }
 			set { SetValue(TypeUnitProperty, value); }
 		}
 
 		public static readonly DependencyProperty TypeUnitProperty =
-			DependencyProperty.Register("TypeUnit", typeof(TypeUnit), typeof(UnitView));
+			DependencyProperty.Register("TypeUnit", typeof(TypeObject), typeof(BaseObjectView));
 
 		public int ZIndex
 		{
@@ -30,11 +30,11 @@ namespace BattleCity.View.UnitViews
 		}
 
 		public static readonly DependencyProperty ZIndexProperty =
-			DependencyProperty.Register("ZIndex", typeof(int), typeof(UnitView), new PropertyMetadata(0, ZIndexChangedCallback));
+			DependencyProperty.Register("ZIndex", typeof(int), typeof(BaseObjectView), new PropertyMetadata(0, ZIndexChangedCallback));
 
 		private static void ZIndexChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
 		{
-			((UnitView)d).SetValue(Canvas.ZIndexProperty, e.NewValue);
+			((BaseObjectView)d).SetValue(Canvas.ZIndexProperty, e.NewValue);
 		}
 
 		public double X
@@ -44,11 +44,11 @@ namespace BattleCity.View.UnitViews
 		}
 
 		public static readonly DependencyProperty XProperty =
-			DependencyProperty.Register("X", typeof(double), typeof(UnitView), new PropertyMetadata(0.0, xChangedCallback));
+			DependencyProperty.Register("X", typeof(double), typeof(BaseObjectView), new PropertyMetadata(0.0, xChangedCallback));
 
 		private static void xChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
 		{
-			((UnitView)d).SetValue(Canvas.LeftProperty, e.NewValue);
+			((BaseObjectView)d).SetValue(Canvas.LeftProperty, e.NewValue);
 		}
 
 		public double Y
@@ -58,11 +58,11 @@ namespace BattleCity.View.UnitViews
 		}
 
 		public static readonly DependencyProperty YProperty =
-			DependencyProperty.Register("Y", typeof(double), typeof(UnitView), new PropertyMetadata(0.0, yChangedCallback));
+			DependencyProperty.Register("Y", typeof(double), typeof(BaseObjectView), new PropertyMetadata(0.0, yChangedCallback));
 
 		private static void yChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
 		{
-			((UnitView)d).SetValue(Canvas.TopProperty, e.NewValue);
+			((BaseObjectView)d).SetValue(Canvas.TopProperty, e.NewValue);
 		}
 		#endregion
 

@@ -8,18 +8,18 @@ using System.Windows.Media.Imaging;
 
 namespace BattleCity.Services
 {
-	public static class TypeUnitService
+	public static class TypeObjectService
 	{
-		public static TypeUnit GetTypeUnitBySymbol(char symbol)
+		public static TypeObject GetTypeUnitBySymbol(char symbol)
 		{
-			TypeUnit type = 0;
+			TypeObject type = 0;
 			switch (symbol)
 			{
 				case GameConfiguration.BrickWallSymbol:
-					type = TypeUnit.BrickWall;
+					type = TypeObject.BrickWall;
 					break;
 				case GameConfiguration.ConcreteWallSymbol:
-					type = TypeUnit.ConcreteWall;
+					type = TypeObject.ConcreteWall;
 					break;
 				default:
 					break;

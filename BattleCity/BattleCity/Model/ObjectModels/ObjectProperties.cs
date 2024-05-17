@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace BattleCity.Model.UnitModels
 {
-	public class UnitProperties : Dictionary<PropertiesType, object>, IDictionary<PropertiesType, object>
+	public class ObjectProperties : Dictionary<PropertiesType, object>, IDictionary<PropertiesType, object>
 	{
-		private Unit unit;
+		private BaseObjectModel _object;
 
 		public new object this[PropertiesType key]
 		{
@@ -20,18 +20,18 @@ namespace BattleCity.Model.UnitModels
 			set
 			{
 				object obj;
-				unit.Properties.TryGetValue(key, out obj);
+				_object.Properties.TryGetValue(key, out obj);
 				if (!value.Equals(obj))
 				{
 					base[key] = value;
-					unit.OnPropertyChanged(key, value);
+					_object.OnPropertyChanged(key, value);
 				}
 			}
 		}
 
-		public UnitProperties(Unit unit)
+		public ObjectProperties(BaseObjectModel unit)
 		{
-			this.unit = unit;
+			this._object = unit;
 		}
 	}
 }
