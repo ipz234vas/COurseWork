@@ -136,15 +136,6 @@ namespace BattleCity.ViewModel
             GameConfiguration.UsedKeys.Remove(currentKey);
             GameConfiguration.UsedKeys.Add(newKey);
         }
-        public int Volume
-        {
-            get => GameConfiguration.Volume;
-            set
-            {
-                GameConfiguration.Volume = value;
-                OnPropertyChanged(nameof(Volume));
-            }
-        }
 
         public ICommand NavigateSettingsMenuCommand { get; }
 

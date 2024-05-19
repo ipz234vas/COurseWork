@@ -1,4 +1,5 @@
-﻿using BattleCity.Services;
+﻿using BattleCity.Model.ObjectModels;
+using BattleCity.Services;
 using BattleCity.Types;
 using System;
 using System.Collections.Generic;
@@ -8,77 +9,85 @@ using System.Threading.Tasks;
 
 namespace BattleCity.Model.UnitModels
 {
-	public class MoveableObject : BaseObjectModel
-	{
-		private int speed;
-		public int Speed
-		{
-			get { return speed; }
-			set
-			{
-				if (speed != value)
-				{
-					speed = value;
-					OnPropertyChanged(PropertiesType.Speed, value);
-				}
-			}
-		}
-		public MoveableObject(int id, int x, int y, int width, int height, TypeObject type, int speed) : base(id, x, y, width, height, type)
-		{
-			Speed = speed;
-		}
-		public bool CanMove(MovementDirection movement)
-		{
+    public class MoveableObject : BaseObjectModel
+    {
+        private int speed;
+        public int Speed
+        {
+            get { return speed; }
+            set
+            {
+                if (speed != value)
+                {
+                    speed = value;
+                    OnPropertyChanged(PropertiesType.Speed, value);
+                }
+            }
+        }
+        public MoveableObject(int id, int x, int y, int width, int height, TypeObject type, int speed) : base(id, x, y, width, height, type)
+        {
+            Speed = speed;
+        }
+        public virtual bool CanMove(MovementDirection movement)
+        {
             Properties[PropertiesType.MovementDirection] = movement;
             MoveableObject TestCollisia = new MoveableObject(ID, X, Y, Width, Height, Type, Speed);
-			switch (movement)
-			{
-				case MovementDirection.Left:
-					TestCollisia.X -= (int)speed;
-					break;
+            switch (movement)
+            {
+                case MovementDirection.Left:
+                    TestCollisia.X -= (int)speed;
+                    break;
 
-				case MovementDirection.Right:
-					TestCollisia.X += (int)speed;
-					break;
+                case MovementDirection.Right:
+                    TestCollisia.X += (int)speed;
+                    break;
 
-				case MovementDirection.Up:
-					TestCollisia.Y -= (int)speed;
-					break;
+                case MovementDirection.Up:
+                    TestCollisia.Y -= (int)speed;
+                    break;
 
-				case MovementDirection.Down:
-					TestCollisia.Y += (int)speed;
-					break;
-			}
-			if (CheckCollisionService.CheckCollisionWithBorder(TestCollisia)) return false;
-			foreach (var unit in CheckCollisionService.objects)
-			{
-				if (ID != unit.ID)
-				{
-					if (CheckCollisionService.CheckCollision(TestCollisia, unit)) return false;
-				}
-			}
-			return true;
-		}
-		public virtual void Move(MovementDirection movement)
-		{
-			switch (movement)
-			{
-				case MovementDirection.Left:
-					X -= speed;
-					break;
+                case MovementDirection.Down:
+                    TestCollisia.Y += (int)speed;
+                    break;
+            }
+            if (CheckCollisionService.CheckCollisionWithBorder(TestCollisia)) return false;
+            foreach (var _object in CheckCollisionService.objects)
+            {
+                if (ID != _object.ID)
+                {
+                    if (CheckCollisionService.CheckCollision(TestCollisia, _object))
+                    {
+                        if (_object is Bullet) return true;
+                        if (_object.Type == TypeObject.Forest) return true;
+                        if (_object.Type == TypeObject.Ice) return true;
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
 
-				case MovementDirection.Right:
-					X += speed;
-					break;
 
-				case MovementDirection.Up:
-					Y -= speed;
-					break;
+        public virtual void Move(MovementDirection movement)
+        {
+            switch (movement)
+            {
+                case MovementDirection.Left:
+                    X -= speed;
+                    break;
 
-				case MovementDirection.Down:
-					Y += speed;
-					break;
-			}
-		}
-	}
+                case MovementDirection.Right:
+                    X += speed;
+                    break;
+
+                case MovementDirection.Up:
+                    Y -= speed;
+                    break;
+
+                case MovementDirection.Down:
+                    Y += speed;
+                    break;
+            }
+        }
+    }
 }

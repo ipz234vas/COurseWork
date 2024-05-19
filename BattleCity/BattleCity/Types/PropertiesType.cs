@@ -15,6 +15,7 @@ namespace BattleCity.Types
 		Y,
 		ID,
 		TypeUnit,
+		IsSecondPlayer,
 		Owner,
 		Detonation,
 		NumberOfHits,

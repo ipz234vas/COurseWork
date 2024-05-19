@@ -47,15 +47,16 @@ namespace BattleCity.View.UserControls
 			base.OnKeyDown(e);
 
 			if (e.Key == GameConfiguration.KeyDown1Player || e.Key == GameConfiguration.KeyLeft1Player ||
-				e.Key == GameConfiguration.KeyRight1Player || e.Key == GameConfiguration.KeyUp1Player)
+				e.Key == GameConfiguration.KeyRight1Player || e.Key == GameConfiguration.KeyUp1Player || e.Key == GameConfiguration.KeyShoot1Player)
 			{
 				gamePlayViewModel?.Player1KeyDown(e.Key);
 			}
 			else if (e.Key == GameConfiguration.KeyDown2Player || e.Key == GameConfiguration.KeyLeft2Player ||
-				e.Key == GameConfiguration.KeyRight2Player || e.Key == GameConfiguration.KeyUp2Player)
+				e.Key == GameConfiguration.KeyRight2Player || e.Key == GameConfiguration.KeyUp2Player || e.Key == GameConfiguration.KeyShoot2Player)
 			{
 				gamePlayViewModel?.Player2KeyDown(e.Key);
 			}
+			else if (e.Key == GameConfiguration.KeyPause) gamePlayViewModel?.Pause();
 			e.Handled = true;
 		}
 		protected override void OnKeyUp(KeyEventArgs e)

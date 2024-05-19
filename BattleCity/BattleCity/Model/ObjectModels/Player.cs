@@ -8,17 +8,12 @@ using System.Threading.Tasks;
 
 namespace BattleCity.Model.ObjectModels
 {
-    public class Player
+    public class Player : Owner
     {
-        public Tank PlayerTank { get; set; }
-        public Star Star { get; set; }
-        public int TankLevel { get; set; }
-        public int Lifes { get; set; }
+        public int TankLevel { get; set; } = GameConfiguration.BasePlayerTankLevel;
+        public int Lifes { get; set; } = GameConfiguration.BasePlayerTankLifes;
         public bool IsSecondPlayer { get; set; }
-        public event EventHandler TankCreated;
-        public event EventHandler TankRemoved;
-        public event EventHandler StarSpawned;
-        public event EventHandler StarRemoved;
+        public event Action PlayerDied;
 
         public Player(bool is2Player = false)
         {
@@ -29,20 +24,17 @@ namespace BattleCity.Model.ObjectModels
             int x = IsSecondPlayer ? GameConfiguration.XFor2Player : GameConfiguration.XFor1Player;
             int y = GameConfiguration.YForPlayer;
 
-            PlayerTank = new Tank(BaseObjectModel.NextID, x, y, GameConfiguration.TankWidth, GameConfiguration.TankHeight, TypeObject.SmallTankPlayer, 5, 5);
-
-            Star = new Star(BaseObjectModel.NextID, x, y, GameConfiguration.TankWidth, GameConfiguration.TankHeight, TypeObject.Star, PlayerTank);
-            Star.StarSpawned += StarSpawned;
-            Star.StarDeleted += StarRemoved;
-            Star.CurrentTank.TankCreated += TankCreated;
-            Star.CurrentTank.TankDeleted += TankRemoved;
-            Star.Spawn();
+            base.CreateTank(x, y, TypeObject.SmallTankPlayer);
+            Tank.TankDeleted += DestroyTank;
         }
 
-        public void DestroyTank(object? sender, EventArgs e)
+        public new void DestroyTank(object? sender, EventArgs e)
         {
             if (TankLevel > 1) TankLevel--;
-            TankRemoved?.Invoke(this, EventArgs.Empty);
+            base.DestroyTank();
+            Lifes--;
+            if (Lifes <= 0) PlayerDied?.Invoke();
+            else CreateTank();
         }
     }
 }

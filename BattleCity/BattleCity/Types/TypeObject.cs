@@ -18,17 +18,17 @@ namespace BattleCity.Types
 		Ice,
 		Eagle,
 		Star,
-		BigDetonation,
+		BigExplosion,
 
 		SmallTankPlayer,
 		LightTankPlaeyr,
 		MediumTankPlaeyr,
 		HeavyTankPlaeyr,
 
-		PlainTank,
-		ArmoredPersonnelCarrierTank,
-		QuickFireTank,
-		ArmoredTank,
+		BasicTank,
+		FastTank,
+		PowerTank,
+		ArmorTank,
 
 		Clock,
 		Grenade,

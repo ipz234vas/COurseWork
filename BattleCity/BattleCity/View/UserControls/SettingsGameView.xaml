@@ -121,20 +121,6 @@
                         <ComboBox Width="100" SelectedItem="{Binding KeyShoot2Player, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" ItemsSource="{Binding AvailableKeys}"/>
                     </StackPanel>
                 </StackPanel>
-                <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                        </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" Text="VOLUME" Foreground="Red" FontSize="24" Margin="0 10"/>
-                        <StackPanel Grid.Row="1" Orientation="Horizontal">
-                            <TextBlock Text="0" Margin="5"/>
-                            <Slider  Minimum="0" Maximum="100" Value="{Binding Volume, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Width="200" HorizontalAlignment="Center"/>
-                            <TextBlock Text="100" Margin="5"/>
-                        </StackPanel>
-                    </Grid>
-                </StackPanel>
             </Grid>
         </Grid>
     </Grid>

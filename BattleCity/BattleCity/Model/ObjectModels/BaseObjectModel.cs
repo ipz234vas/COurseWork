@@ -26,6 +26,7 @@ namespace BattleCity.Model.UnitModels
         }
 
         public event Action<int, PropertiesType, object> PropertyChanged;
+        public event EventHandler Remove;
 
         public static int NextID { get { return nextId; } }
 
@@ -80,6 +81,10 @@ namespace BattleCity.Model.UnitModels
         public void OnPropertyChanged(PropertiesType type, Object value)
         {
             PropertyChanged?.Invoke(ID, type, value);
+        }
+        public virtual void OnRemove()
+        {
+            Remove?.Invoke(this, EventArgs.Empty);
         }
     }
 }

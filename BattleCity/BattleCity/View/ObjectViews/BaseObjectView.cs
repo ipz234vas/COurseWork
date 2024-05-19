@@ -64,9 +64,9 @@ namespace BattleCity.View.UnitViews
 		{
 			((BaseObjectView)d).SetValue(Canvas.TopProperty, e.NewValue);
 		}
-		#endregion
+        #endregion
 
-		public virtual void Update(PropertiesType prop, object value)
+        public virtual void Update(PropertiesType prop, object value)
 		{
 			switch (prop)
 			{

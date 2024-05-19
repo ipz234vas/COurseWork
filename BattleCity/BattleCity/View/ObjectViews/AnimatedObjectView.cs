@@ -13,7 +13,7 @@ namespace BattleCity.View.ObjectViews
     public class AnimatedObjectView : BaseObjectView
     {
         private DispatcherTimer timer = new DispatcherTimer();
-        private int frame;
+        protected int frame;
         private ImageSource[] imagesSources;
         private bool isAnimated = false;
 
