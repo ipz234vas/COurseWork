@@ -10,7 +10,6 @@ namespace BattleCity.Model.ObjectModels
 {
     public class Player : Owner
     {
-        public int TankLevel { get; set; } = GameConfiguration.BasePlayerTankLevel;
         public int Lifes { get; set; } = GameConfiguration.BasePlayerTankLifes;
         public bool IsSecondPlayer { get; set; }
         public event Action PlayerDied;
@@ -30,7 +29,6 @@ namespace BattleCity.Model.ObjectModels
 
         public new void DestroyTank(object? sender, EventArgs e)
         {
-            if (TankLevel > 1) TankLevel--;
             base.DestroyTank();
             Lifes--;
             if (Lifes <= 0) PlayerDied?.Invoke();

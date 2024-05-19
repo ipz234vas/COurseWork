@@ -87,11 +87,18 @@ namespace BattleCity.Model.ObjectModels
                         IsCollision = true;
                         continue;
                     }
+                    if (currentObject.Type == TypeObject.Water)
+                    {
+                        continue;
+                    }
+                    if (currentObject.Type == TypeObject.Forest)
+                    {
+                        continue;
+                    }
                     if (currentObject.Type == TypeObject.BrickWall)
                     {
                         DestroyBrickWall(currentObject);
                     }
-
                     IsCollision = true;
                 }
             }

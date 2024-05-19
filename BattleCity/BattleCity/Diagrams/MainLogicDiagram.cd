@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BattleCity.Model.ObjectModels.Enemy" Collapsed="true">
+    <Position X="15.25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\ObjectModels\Enemy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleCity.Model.ObjectModels.Owner">
+    <Position X="12.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAgGAgQAAAAAAAAAAFQiEAAAAAAAAA=</HashCode>
+      <FileName>Model\ObjectModels\Owner.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Star" />
+      <Property Name="Tank" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="BattleCity.Model.ObjectModels.Player" Collapsed="true">
+    <Position X="9.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAACAAAAAAgAAAAAAAAAAEAAABCAAAAAAAAAAA=</HashCode>
+      <FileName>Model\ObjectModels\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleCity.Model.ObjectModels.Star" Collapsed="true">
+    <Position X="15" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQgAAAAAAAAAAAAAAkCAAEAAAEAAAAAAAAAAAgEAAA=</HashCode>
+      <FileName>Model\ObjectModels\Star.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BattleCity.Model.ObjectModels.Tank" Collapsed="true">
+    <Position X="9.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAMkAAAhAAAAQCAAAAAEEAEERJBBAQAABAAA=</HashCode>
+      <FileName>Model\ObjectModels\Tank.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleCity.Services.ControlBulletsService" Collapsed="true">
+    <Position X="9.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQggAAAAIACAAAAAAAAAAAAAAAAAAAAAAAAgAgAAAA=</HashCode>
+      <FileName>Services\ControlBulletsService.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="bullets" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Orientation="Left" Position="0.1" />
+  </Class>
+  <Class Name="BattleCity.Services.ControlEnemiesService" Collapsed="true">
+    <Position X="15.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIYgAQEAAAAAAQIABAAACAAAAAAARAIBAAQAAAgRAAA=</HashCode>
+      <FileName>Services\ControlEnemiesService.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="enemies" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.1" />
+  </Class>
+  <Class Name="BattleCity.Services.ControlPlayerService" Collapsed="true">
+    <Position X="9.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQwAKQAAAkgiEACIIgBAACAAAAAAIAAAAAggAgABAE=</HashCode>
+      <FileName>Services\ControlPlayerService.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="CurrentPlayer" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.1" />
+  </Class>
+  <Class Name="BattleCity.Model.ObjectModels.Bullet" Collapsed="true">
+    <Position X="9.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAIEAAAAAAAAQAAAAAAEAQECAAAQAACCAAAA=</HashCode>
+      <FileName>Model\ObjectModels\Bullet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleCity.ViewModel.GameFieldViewModel">
+    <Position X="12.25" Y="4.75" Width="1.5" />
+    <Members>
+      <Method Name="GameFieldViewModel" Hidden="true" />
+      <Method Name="Player1KeyDown" Hidden="true" />
+      <Method Name="Player1KeyUp" Hidden="true" />
+      <Method Name="Player2KeyDown" Hidden="true" />
+      <Method Name="Player2KeyUp" Hidden="true" />
+      <Method Name="RemoveControlService" Hidden="true" />
+      <Method Name="RemoveObject" Hidden="true" />
+      <Method Name="RemoveObjectsFromMap" Hidden="true" />
+      <Method Name="RemoveObjectsOnPosition" Hidden="true" />
+      <Method Name="RemovePausableObject" Hidden="true" />
+    </Members>
+    <AssociationLine Name="ControlFor1Player" Type="BattleCity.Services.ControlPlayerService">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.155" Y="0.11" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="ControlFor2Player" Type="BattleCity.Services.ControlPlayerService">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.326" Y="0.081" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AARwkCACCgAAAIAIAAACCAQAJIgCADACAQEgAEkBAIA=</HashCode>
+      <FileName>ViewModel\GameFieldViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="ControlBullets" />
+      <Field Name="ControlEnemies" />
+      <Field Name="ControlFor1Player" />
+      <Field Name="ControlFor2Player" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -8,6 +8,6 @@ namespace BattleCity.Stores
 {
     public static class SessionUserStore
     {
-        public static int CurrentLevel { get; set; } = 2;
+        public static int CurrentLevel { get; set; } = 1;
     }
 }

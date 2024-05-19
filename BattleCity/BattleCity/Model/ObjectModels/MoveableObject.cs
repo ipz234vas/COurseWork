@@ -58,8 +58,7 @@ namespace BattleCity.Model.UnitModels
                     if (CheckCollisionService.CheckCollision(TestCollisia, _object))
                     {
                         if (_object is Bullet) return true;
-                        if (_object.Type == TypeObject.Forest) return true;
-                        if (_object.Type == TypeObject.Ice) return true;
+                        if (_object.Type == TypeObject.Forest) continue;
                         return false;
                     }
                 }

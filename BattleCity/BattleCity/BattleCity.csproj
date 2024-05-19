@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Images\Blocks\Water.png" />
     <None Remove="Resources\Images\Eagle\Eagle.png" />
     <None Remove="Resources\Images\Eagle\EagleDestroyed.png" />
     <None Remove="Resources\Fonts\BattleCity.ttf" />
@@ -25,7 +26,6 @@
     <None Remove="Resources\Images\Blocks\BrickWall\TopRight.png" />
     <None Remove="Resources\Images\Blocks\ConcreteWall.png" />
     <None Remove="Resources\Images\Blocks\Forest.png" />
-    <None Remove="Resources\Images\Blocks\Ice.png" />
     <None Remove="Resources\Images\Bullets\BulletDown.png" />
     <None Remove="Resources\Images\Bullets\BulletLeft.png" />
     <None Remove="Resources\Images\Bullets\BulletRight.png" />
@@ -132,6 +132,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\Images\Blocks\Water.png" />
     <Resource Include="Resources\Images\Eagle\Eagle.png" />
     <Resource Include="Resources\Images\Eagle\EagleDestroyed.png" />
     <Resource Include="Resources\Fonts\BattleCity.ttf" />
@@ -154,7 +155,6 @@
       <CopyToOutputDirectory></CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Images\Blocks\Forest.png" />
-    <Resource Include="Resources\Images\Blocks\Ice.png" />
     <Resource Include="Resources\Images\Bullets\BulletDown.png" />
     <Resource Include="Resources\Images\Bullets\BulletLeft.png" />
     <Resource Include="Resources\Images\Bullets\BulletRight.png" />

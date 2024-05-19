@@ -12,7 +12,7 @@ namespace BattleCity
 		public const char BrickWallSymbol = '@';
 		public const char ConcreteWallSymbol = '#';
 		public const char WaterSymbol = '$';
-		public const char IceSymbol = '&';
+		public const char ForestSymbol = '&';
 		public const char EmptySpaceSymbol = ' ';
 
 		public static int ObjectWidth = 20;
@@ -58,6 +58,7 @@ namespace BattleCity
 
         public static int TimeDetonation = 6;
 
+		public static int PausedFontSize = 4 * ObjectHeight;
         public static HashSet<Key> UsedKeys { get; } = new HashSet<Key>();
 
         public static Key KeyUp1Player = Key.W;

@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace BattleCity.ViewModel
 {
@@ -46,34 +47,49 @@ namespace BattleCity.ViewModel
 				OnPropertyChanged(nameof(GlobalLevelsList));
 			}
 		}
-		public LevelsViewModel(AccountStore accountStore, NavigationStore navigationStore)
+        public ICommand NavigateMenuCommand { get; }
+        public LevelsViewModel(AccountStore accountStore, NavigationStore navigationStore)
 		{
-			CurrentAccount = accountStore.CurrentAccount;
+            NavigateMenuCommand = new NavigationCommand<MenuViewModel>(new NavigationService<MenuViewModel>(navigationStore, () => new MenuViewModel(accountStore, navigationStore)));
+            CurrentAccount = accountStore.CurrentAccount;
 			GetLevelsFromDB(accountStore, navigationStore);
 		}
 
 		private async void GetLevelsFromDB(AccountStore accountStore, NavigationStore navigationStore)
 		{
-			await Task.Run(() => {
+            await Task.Run(() => {
                 using (var context = new ApplicationDbContext())
                 {
                     var levels = context.Levels.ToList();
 
-					var levelsListitems = levels.Select(Item => new LevelsListItemModel
-					{
-						Level = Item,
-						Text = Item.Title,
-						Command = new NavigationCommand<PlayerSelectionViewModel>(new NavigationService<PlayerSelectionViewModel>(navigationStore, () => new PlayerSelectionViewModel(accountStore, navigationStore, new LevelStore { CurrentLevel = Item }))),
-                        IsAvailable = CurrentAccount != null ? CurrentAccount.CurrentLevel > LevelCounts++ : SessionUserStore.CurrentLevel > LevelCounts++
-            });
-                    this.LevelsList = new ObservableCollection<LevelsListItemModel>(levelsListitems.Where(item => item.Level.CreatorId == 1));
+                    var levelCounts = 0;
+                    var levelsListItems = levels.Select(item => new LevelsListItemModel
+                    {
+                        Level = item,
+                        Text = item.Title,
+                        Command = new NavigationCommand<PlayerSelectionViewModel>(new NavigationService<PlayerSelectionViewModel>(navigationStore, () => new PlayerSelectionViewModel(accountStore, navigationStore, new LevelStore { CurrentLevel = item }))),
+                        IsAvailable = CurrentAccount != null ? CurrentAccount.CurrentLevel > levelCounts++ : SessionUserStore.CurrentLevel > levelCounts++
+                    });
+
+                    // Встановлюємо LevelsList з визначенням IsAvailable
+                    this.LevelsList = new ObservableCollection<LevelsListItemModel>(levelsListItems.Where(item => item.Level.CreatorId == 1));
+
+                    // Використовуємо окрему колекцію для PersonalLevelsList та GlobalLevelsList
+                    var personalAndGlobalLevelsListItems = levels.Select(item => new LevelsListItemModel
+                    {
+                        Level = item,
+                        Text = item.Title,
+                        Command = new NavigationCommand<PlayerSelectionViewModel>(new NavigationService<PlayerSelectionViewModel>(navigationStore, () => new PlayerSelectionViewModel(accountStore, navigationStore, new LevelStore { CurrentLevel = item }))),
+                        IsAvailable = true // Значення IsAvailable не потрібне для цих списків
+                    });
+
                     if (CurrentAccount != null)
                     {
-                        this.PersonalLevelsList = new ObservableCollection<LevelsListItemModel>(levelsListitems.Where(item => item.Level.CreatorId == CurrentAccount.Id));
-                        this.GlobalLevelsList = new ObservableCollection<LevelsListItemModel>(levelsListitems.Where(item => item.Level.CreatorId != 1 && item.Level.CreatorId != CurrentAccount.Id));
+                        this.PersonalLevelsList = new ObservableCollection<LevelsListItemModel>(personalAndGlobalLevelsListItems.Where(item => item.Level.CreatorId == CurrentAccount.Id));
+                        this.GlobalLevelsList = new ObservableCollection<LevelsListItemModel>(personalAndGlobalLevelsListItems.Where(item => item.Level.CreatorId != 1 && item.Level.CreatorId != CurrentAccount.Id));
                     }
                 }
-            }); 
-		}
+            });
+        }
 	}
 }

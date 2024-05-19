@@ -90,11 +90,11 @@ namespace BattleCity.Services
                 case GameConfiguration.ConcreteWallSymbol:
                     type = TypeObject.ConcreteWall;
                     break;
-                case GameConfiguration.IceSymbol:
-                    type = TypeObject.Ice;
-                    break;
                 case GameConfiguration.WaterSymbol:
                     type = TypeObject.Water;
+                    break;
+                case GameConfiguration.ForestSymbol:
+                    type = TypeObject.Forest;
                     break;
                 default:
                     break;

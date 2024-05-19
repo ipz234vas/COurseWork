@@ -17,6 +17,7 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
 
@@ -31,7 +32,8 @@ namespace BattleCity.ViewModel
         public ControlPlayerService ControlFor2Player;
         public ControlEnemiesService ControlEnemies;
         public ControlBulletsService ControlBullets;
-
+        public Action<bool> OnGameOver;
+        public Action PausedChanged;
         public GameFieldViewModel(LevelStore levelStore)
         {
             ObjectModels.CollectionChanged += ObjectModels_CollectionChanged;
@@ -61,11 +63,11 @@ namespace BattleCity.ViewModel
 
         public void Player1KeyDown(Key key)
         {
-            ControlFor1Player.KeyDown(key);
+            ControlFor1Player?.KeyDown(key);
         }
         public void Player1KeyUp(Key key)
         {
-            ControlFor1Player.KeyUp(key);
+            ControlFor1Player?.KeyUp(key);
         }
         public void Player2KeyDown(Key key)
         {
@@ -95,8 +97,18 @@ namespace BattleCity.ViewModel
 
         private void RemoveControlService(ControlPlayerService service)
         {
-            service = null;
-            if (ControlFor1Player == null && ControlFor2Player == null) GameOver();
+            RemoveServiceSubscriptions(service);
+            if (ControlFor1Player == service)
+                ControlFor1Player = null;
+            else if (ControlFor2Player == service)
+                ControlFor2Player = null;
+            if (ControlFor1Player == null && ControlFor2Player == null) GameLose();
+        }
+
+        private void RemoveServiceSubscriptions(ControlPlayerService service)
+        {
+            service.PlayerDied -= RemoveControlService;
+            RemovePausableObject(service);
         }
 
         private void OnEnemyCreated(object? sender, Enemy enemy)
@@ -162,7 +174,7 @@ namespace BattleCity.ViewModel
             }
             RemoveObjectsFromMap();
             Eagle eagle = new Eagle(BaseObjectModel.NextID, GameConfiguration.XForEagle, GameConfiguration.YForEagle, GameConfiguration.EagleWidth, GameConfiguration.EagleHeight);
-            eagle.EagleDestroyed += GameOver;
+            eagle.EagleDestroyed += GameLose;
             eagle.BigExplosionSpawned += AddObject;
             eagle.BigExplosionDeleted += RemoveObject;
             ObjectModels.Add(eagle);
@@ -251,20 +263,23 @@ namespace BattleCity.ViewModel
             ResumeRequested -= pausable.Resume;
         }
 
-        public void Pause()
+        public void Pause(bool needChanged = true)
         {
             if (!IsPaused) PauseRequested?.Invoke();
             else ResumeRequested?.Invoke();
             IsPaused = !IsPaused;
+            if(needChanged)PausedChanged?.Invoke();
         }
         #endregion
         private void GameWon()
         {
-
+            Pause(false);
+            OnGameOver.Invoke(true);
         }
-        private void GameOver()
+        private void GameLose()
         {
-            
+            Pause(false);
+            OnGameOver.Invoke(false);
         }
     }
 }

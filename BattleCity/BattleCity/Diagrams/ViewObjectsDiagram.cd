@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BattleCity.View.ObjectViews.AnimatedObjectView" Collapsed="true">
+    <Position X="4.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQgAUAAACAAAAIAAAAEQAAAAAAEAAAAAAAAAQAAAAE=</HashCode>
+      <FileName>View\ObjectViews\AnimatedObjectView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleCity.View.ObjectViews.BigExplosionView" Collapsed="true">
+    <Position X="4.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAgAEIAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>View\ObjectViews\BigExplosionView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleCity.View.ObjectViews.BrickWallView" Collapsed="true">
+    <Position X="11.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\ObjectViews\BrickWallView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleCity.View.ObjectViews.BulletView" Collapsed="true">
+    <Position X="2.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgABAAAAAgAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\ObjectViews\BulletView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleCity.View.ObjectViews.EagleView" Collapsed="true">
+    <Position X="9" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\ObjectViews\EagleView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleCity.View.ObjectViews.TankView" Collapsed="true">
+    <Position X="6.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAABACAAACAAAAAAAAEBAAAAgAAAAAg=</HashCode>
+      <FileName>View\ObjectViews\TankView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleCity.View.UnitViews.BaseObjectView">
+    <Position X="7" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AARIAAAAAAAAwCAAAAgAAABAAAAAAAABAAQAAACAYAA=</HashCode>
+      <FileName>View\ObjectViews\BaseObjectView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

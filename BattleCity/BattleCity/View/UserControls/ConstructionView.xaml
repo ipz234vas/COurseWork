@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="BattleCity.View.UserControls.ConstructionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BattleCity.View.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="560" d:DesignWidth="620">
+    <Grid>
+        <Button Style="{StaticResource ImportantTextButton}" 
+     Command="{Binding NavigateMenuCommand}" 
+     Content="GO TO MENU" 
+     HorizontalAlignment="Left" 
+     VerticalAlignment="Top" 
+     Margin="30 30 0 0"
+     BorderBrush="White"/>
+        <Grid>
+            <StackPanel Margin="10">
+                <TextBlock Text="Title (50 characters max):" Margin="0,50,0,10" Foreground="White" FontFamily="{StaticResource SecondaryTextFontFamily}"/>
+                <TextBox Width="580" Height="30" Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Text="Map Data (26x26):" Margin="0,10" Foreground="White" FontFamily="{StaticResource SecondaryTextFontFamily}"/>
+                <TextBox Width="580" Height="200" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" 
+                     Text="{Binding MapData, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <TextBlock Text="Enemy Composition (20 characters, B/F/P):" Margin="0,10,0,10" Foreground="White" FontFamily="{StaticResource SecondaryTextFontFamily}"/>
+                <TextBox Width="580" Height="30" Text="{Binding EnemyData, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                    <Button Content="Create" Width="270" Command="{Binding CreateCommand}" Style="{StaticResource submitButton}" Foreground="Black"/>
+                    <Button Content="Generate Random" Width="270" Margin="10,0,0,0" Command="{Binding GenerateCommand}" Style="{StaticResource submitButton}" Foreground="Black"/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Center">
+                    <TextBlock Text="{Binding Message}" Foreground="Red" FontFamily="{StaticResource SecondaryTextFontFamily}"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

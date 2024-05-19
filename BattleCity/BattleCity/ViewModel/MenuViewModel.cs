@@ -23,7 +23,7 @@ namespace BattleCity.ViewModel
             menuList = new ObservableCollection<ListItemModel>
 	{
 		new ListItemModel("PLAY", new NavigationCommand<LevelsViewModel>(new NavigationService<LevelsViewModel>(navigationStore, () => new LevelsViewModel(accountStore, navigationStore)))),
-		new ListItemModel("CONSTRUCTION", new NavigationCommand<SettingsViewModel>(new NavigationService<SettingsViewModel>(navigationStore, () => new SettingsViewModel(accountStore, navigationStore)))),
+		new ListItemModel("CONSTRUCTION", new NavigationCommand<ConstructionViewModel>(new NavigationService<ConstructionViewModel>(navigationStore, () => new ConstructionViewModel(accountStore, navigationStore)))),
 		new ListItemModel("SETTINGS", new NavigationCommand<SettingsViewModel>(new NavigationService<SettingsViewModel>(navigationStore, () => new SettingsViewModel(accountStore, navigationStore)))),
 		new ListItemModel("LEADERBOARD", new NavigationCommand<LeaderboardViewModel>(new NavigationService<LeaderboardViewModel>(navigationStore, () => new LeaderboardViewModel(accountStore, navigationStore))))
 	};

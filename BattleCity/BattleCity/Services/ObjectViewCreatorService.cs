@@ -28,8 +28,8 @@ namespace BattleCity.Services
                 case TypeObject.ConcreteWall:
                     view = new BaseObjectView { Source = new BitmapImage(new Uri(@"../../Resources/Images/Blocks/ConcreteWall.png", UriKind.Relative)) };
                     break;
-                case TypeObject.Ice:
-                    view = new BaseObjectView { Source = new BitmapImage(new Uri(@"../../Resources/Images/Blocks/Ice.png", UriKind.Relative)) };
+                case TypeObject.Water:
+                    view = new BaseObjectView { Source = new BitmapImage(new Uri(@"../../Resources/Images/Blocks/Water.png", UriKind.Relative)) };
                     break;
                 case TypeObject.Forest:
                     view = new BaseObjectView { Source = new BitmapImage(new Uri(@"../../Resources/Images/Blocks/Forest.png", UriKind.Relative)), ZIndex = 15 };

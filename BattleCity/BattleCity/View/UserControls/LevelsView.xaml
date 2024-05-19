@@ -7,67 +7,86 @@
              mc:Ignorable="d" 
              Height="560" Width="620">
     <Grid>
-        <TabControl>
-            <TabItem Header="Levels" Margin="0">
-                <ListBox ItemsSource="{Binding LevelsList}">
-                    <ListBox.Resources>
-                        <Style TargetType="ListBoxItem">
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="ListBoxItem">
-                                        <Border x:Name="Border" Padding="2" Background="Gray">
-                                            <Grid>
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="*" />
-                                                </Grid.RowDefinitions>
-                                                <Button Content="{Binding Text}" Command="{Binding Command}" IsEnabled="{Binding IsAvailable}"/>
-                                            </Grid>
-                                        </Border>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                        </Style>
-                    </ListBox.Resources>
-                </ListBox>
-            </TabItem>
-            <TabItem Header="CustomLevels" Margin="0">
-                <TabControl>
-                    <TabItem Header="MyLevels">
-                        <ListBox ItemsSource="{Binding PersonalLevelsList}">
-                            <ListBox.Resources>
-                                <Style TargetType="ListBoxItem">
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate TargetType="ListBoxItem">
-                                                <Border x:Name="Border" Padding="2" Background="Transparent">
-                                                    <Button Content="{Binding Text}" Style="{StaticResource menuButton}" Command="{Binding Command}" Foreground="Red"/>
-                                                </Border>
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Style>
-                            </ListBox.Resources>
-                        </ListBox>
-                    </TabItem>
-                    <TabItem Header="GlobalLevels">
-                        <ListBox ItemsSource="{Binding GlobalLevelsList}">
-                            <ListBox.Resources>
-                                <Style TargetType="ListBoxItem">
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate TargetType="ListBoxItem">
-                                                <Border x:Name="Border" Padding="2" Background="Transparent">
-                                                    <Button Content="{Binding Text}" Style="{StaticResource menuButton}" Command="{Binding Command}"/>
-                                                </Border>
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Style>
-                            </ListBox.Resources>
-                        </ListBox>
-                    </TabItem>
-                </TabControl>
-            </TabItem>
-        </TabControl>
+        <Button Style="{StaticResource ImportantTextButton}" 
+     Command="{Binding NavigateMenuCommand}" 
+     Content="GO TO MENU" 
+     HorizontalAlignment="Right" 
+     VerticalAlignment="Top" 
+     Margin="0 30 30 0"
+     BorderBrush="White"/>
+        <Grid Margin="0,60,0,0">
+            <TabControl>
+                <TabItem Header="Levels" Margin="0">
+                    <ListBox ItemsSource="{Binding LevelsList}">
+                        <ListBox.Resources>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="ListBoxItem">
+                                            <Border x:Name="Border" Padding="2" Background="Gray">
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="*" />
+                                                    </Grid.RowDefinitions>
+                                                    <Button Content="{Binding Text}" Command="{Binding Command}" IsEnabled="{Binding IsAvailable}"/>
+                                                </Grid>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ListBox.Resources>
+                    </ListBox>
+                </TabItem>
+                <TabItem Header="CustomLevels" Margin="0">
+                    <TabControl>
+                        <TabItem Header="MyLevels">
+                            <ListBox ItemsSource="{Binding PersonalLevelsList}">
+                                <ListBox.Resources>
+                                    <Style TargetType="ListBoxItem">
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="ListBoxItem">
+                                                    <Border x:Name="Border" Padding="2" Background="Gray">
+                                                        <Grid>
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="*" />
+                                                            </Grid.RowDefinitions>
+                                                            <Button Content="{Binding Text}" Command="{Binding Command}" IsEnabled="{Binding IsAvailable}"/>
+                                                        </Grid>
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </ListBox.Resources>
+                            </ListBox>
+                        </TabItem>
+                        <TabItem Header="GlobalLevels">
+                            <ListBox ItemsSource="{Binding GlobalLevelsList}">
+                                <ListBox.Resources>
+                                    <Style TargetType="ListBoxItem">
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="ListBoxItem">
+                                                    <Border x:Name="Border" Padding="2" Background="Gray">
+                                                        <Grid>
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="*" />
+                                                            </Grid.RowDefinitions>
+                                                            <Button Content="{Binding Text}" Command="{Binding Command}" IsEnabled="{Binding IsAvailable}"/>
+                                                        </Grid>
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </ListBox.Resources>
+                            </ListBox>
+                        </TabItem>
+                    </TabControl>
+                </TabItem>
+            </TabControl>
+        </Grid>
     </Grid>
 </UserControl>

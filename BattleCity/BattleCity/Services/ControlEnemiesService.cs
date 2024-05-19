@@ -41,6 +41,7 @@ namespace BattleCity.Services
         {
             foreach (var model in CheckCollisionService.objects)
             {
+                if (model.Type == TypeObject.Forest) continue;
                 Rectangle objectBoundingBox = new Rectangle(model.X, model.Y, model.Width, model.Height);
                 if (CheckCollisionService.CheckCollision(objectBoundingBox, boundingBox))
                 {

@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BattleCity.ViewModel.BaseViewModel" Collapsed="true">
+    <Position X="22" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\BaseViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BattleCity.ViewModel.ErrorsViewModel" Collapsed="true">
+    <Position X="21" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAABAAAAAAAAgAAAAAAIAAAAAAAhoAA=</HashCode>
+      <FileName>ViewModel\ErrorsViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BattleCity.ViewModel.GameFieldViewModel" Collapsed="true">
+    <Position X="29.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AARwkCACCgAAAIAIAAACCAQAJIgCADACAQEgAEkBAIA=</HashCode>
+      <FileName>ViewModel\GameFieldViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleCity.ViewModel.GamePlayViewModel" Collapsed="true">
+    <Position X="26.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAEAAAAAAA=</HashCode>
+      <FileName>ViewModel\GamePlayViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="gameFieldViewModel" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="BattleCity.ViewModel.LeaderboardViewModel" Collapsed="true">
+    <Position X="13.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAAACAAAAAAAAAAACAAAAAAgAAAAA=</HashCode>
+      <FileName>ViewModel\LeaderboardViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Accounts" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="BattleCity.ViewModel.LevelsViewModel" Collapsed="true">
+    <Position X="14.5" Y="1.25" Width="1.5" />
+    <InheritanceLine Type="BattleCity.ViewModel.BaseViewModel" ManuallyRouted="true">
+      <Path>
+        <Point X="22.75" Y="5.25" />
+        <Point X="22.75" Y="4.545" />
+        <Point X="18.958" Y="4.545" Type="JumpStart" />
+        <Point X="18.792" Y="4.545" Type="JumpEnd" />
+        <Point X="15.25" Y="4.545" />
+        <Point X="15.25" Y="1.941" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAgAABEAACAQQAAQAAAAAAAAAACAA=</HashCode>
+      <FileName>ViewModel\LevelsViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="CurrentAccount" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="_levelsList" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="BattleCity.ViewModel.LogInViewModel" Collapsed="true">
+    <Position X="18.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAIAABAQCAAAUAAAAAAAAaAAACAgSBIAA=</HashCode>
+      <FileName>ViewModel\LogInViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_errorsViewModel" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BattleCity.ViewModel.MainViewModel" Collapsed="true">
+    <Position X="19.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIEAAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>ViewModel\MainViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_navigationStore" />
+      <Property Name="CurrentViewModel" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="BattleCity.ViewModel.MenuViewModel" Collapsed="true">
+    <Position X="24.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\MenuViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="menuList" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="BattleCity.ViewModel.PlayerSelectionViewModel" Collapsed="true">
+    <Position X="22.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>ViewModel\PlayerSelectionViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleCity.ViewModel.SettingsAccountDeleteViewModel" Collapsed="true">
+    <Position X="16.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAIAABAAAAACQAQAAIAAAKCQADAgABAAA=</HashCode>
+      <FileName>ViewModel\SettingsAccountDeleteViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_errorsViewModel" />
+      <Field Name="validationService" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BattleCity.ViewModel.SettingsAccountNameViewModel" Collapsed="true">
+    <Position X="20.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAABAQAAAA0AACAIAAAKIAACAgABBAA=</HashCode>
+      <FileName>ViewModel\SettingsAccountNameViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_errorsViewModel" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BattleCity.ViewModel.SettingsAccountPasswordViewModel" Collapsed="true">
+    <Position X="22.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABACAAAAAAAAIAABAFAAAAQAAAAIAIYKAAACAgQBAAA=</HashCode>
+      <FileName>ViewModel\SettingsAccountPasswordViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_errorsViewModel" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BattleCity.ViewModel.SettingsAccountResetViewModel" Collapsed="true">
+    <Position X="24.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>wAAAgAAAAAAAIAABIAAAAAQAAQAIAAAKAAgCAgABAAA=</HashCode>
+      <FileName>ViewModel\SettingsAccountResetViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_errorsViewModel" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BattleCity.ViewModel.SettingsAccountViewModel" Collapsed="true">
+    <Position X="20.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAgCAQAAAAAAAAAAAQAAABAAAAAAAIAACCAAAgwAA=</HashCode>
+      <FileName>ViewModel\SettingsAccountViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_accountStore" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="BattleCity.ViewModel.SettingsGameViewModel" Collapsed="true">
+    <Position X="17.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAQCEQAIAAgAAAEAAACADABAAAAAAAQAAQAgAgCAA=</HashCode>
+      <FileName>ViewModel\SettingsGameViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleCity.ViewModel.SettingsMenuViewModel" Collapsed="true">
+    <Position X="15.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAACAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\SettingsMenuViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleCity.ViewModel.SettingsViewModel" Collapsed="true">
+    <Position X="19" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAAAAIAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\SettingsViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_settingsNavigationStore" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="BattleCity.ViewModel.SignUpViewModel" Collapsed="true">
+    <Position X="26.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAgACAAAAAAICABAQCAAAUAAAAAAgAKAAACAgABoAA=</HashCode>
+      <FileName>ViewModel\SignUpViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_errorsViewModel" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BattleCity.Stores.NavigationStore" Collapsed="true">
+    <Position X="18.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIEAAAAAAACAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Stores\NavigationStore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleCity.Model.Account" Collapsed="true">
+    <Position X="13.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACCAAAAAAAAAAAAAQAAAAAAAAAEAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Account.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleCity.Services.AccountValidationService" Collapsed="true">
+    <Position X="13.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAEAAAACAIAAAAA=</HashCode>
+      <FileName>Services\AccountValidationService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleCity.Stores.AccountStore" Collapsed="true">
+    <Position X="20.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAACAAAAAAIAAgAAAQAAAAACAAAAAAA=</HashCode>
+      <FileName>Stores\AccountStore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleCity.Model.ListItemModel" Collapsed="true">
+    <Position X="24.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Model\ListItemModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleCity.Model.LevelsListItemModel" Collapsed="true">
+    <Position X="20" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAIAAAAA=</HashCode>
+      <FileName>Model\LevelsListItemModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

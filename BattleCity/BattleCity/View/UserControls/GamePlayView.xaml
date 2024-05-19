@@ -11,5 +11,9 @@
              Height="{Binding Source={x:Static BattleCity:GameConfiguration.UserControHeight}}" Width="{Binding Source={x:Static BattleCity:GameConfiguration.UserControlWidth}}">
     <Grid VerticalAlignment="Top" HorizontalAlignment="Left">
         <local:GameFieldView DataContext="{Binding GameFieldViewModel}" Margin="10,30,0,10" Width="{Binding Source={x:Static BattleCity:GameConfiguration.SceneWidth}}" Height="{Binding Source={x:Static BattleCity:GameConfiguration.SceneHeight}}"/>
+        <StackPanel Visibility="{Binding PauseVisibility}" Background="#AA000000" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Pause" Foreground="White" Margin="0,0,0,10" FontFamily="{StaticResource SecondaryTextFontFamily}" FontSize="{Binding Source={x:Static BattleCity:GameConfiguration.PausedFontSize}}"/>
+            <Button Content="Go to menu" Command="{Binding Command}" Style="{StaticResource submitButton}" Foreground="Black" />
+        </StackPanel>
     </Grid>
 </UserControl>
